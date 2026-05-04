@@ -1,0 +1,130 @@
+'use client'
+
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+
+const partners = [
+  { name: 'TechCorp', initials: 'TC' },
+  { name: 'Innovate Inc', initials: 'II' },
+  { name: 'Future Labs', initials: 'FL' },
+  { name: 'Digital Edge', initials: 'DE' },
+  { name: 'Cloud Nine', initials: 'CN' },
+  { name: 'Smart Systems', initials: 'SS' },
+  { name: 'Next Wave', initials: 'NW' },
+  { name: 'Prime Tech', initials: 'PT' },
+  { name: 'Elite Solutions', initials: 'ES' },
+  { name: 'Global Dynamics', initials: 'GD' },
+  { name: 'Apex Industries', initials: 'AI' },
+  { name: 'Quantum Labs', initials: 'QL' },
+]
+
+function PartnerLogo({ name, initials, index }: { name: string; initials: string; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.05, duration: 0.5 }}
+      viewport={{ once: true }}
+      className="group relative"
+    >
+      <div className="glass-card rounded-2xl p-8 flex items-center justify-center aspect-[3/2] card-hover cursor-pointer relative overflow-hidden">
+        {/* Glow Effect on Hover */}
+        <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-[#3B82F6]/30 to-[#8B5CF6]/30 blur-xl" />
+        
+        {/* Logo Placeholder */}
+        <div className="relative z-10 flex flex-col items-center gap-2">
+          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#3B82F6]/20 to-[#8B5CF6]/20 flex items-center justify-center text-2xl font-bold text-[#E5E7EB] group-hover:from-[#3B82F6] group-hover:to-[#8B5CF6] group-hover:text-white transition-all duration-500 border border-[#8B5CF6]/20 group-hover:border-transparent">
+            {initials}
+          </div>
+          <span className="text-sm text-[#9CA3AF] group-hover:text-[#E5E7EB] transition-colors font-medium">
+            {name}
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+export function PartnersSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+
+  return (
+    <section
+      id="partners"
+      ref={sectionRef}
+      className="relative py-32 overflow-hidden"
+    >
+      {/* Premium Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#05070D] via-[#0B0F1A] to-[#05070D]" />
+      
+      {/* Gradient Orbs */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#8B5CF6]/50 to-transparent" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#8B5CF6]/10 rounded-full blur-[180px] -translate-x-1/2" />
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#3B82F6]/10 rounded-full blur-[150px] translate-x-1/2" />
+      
+      {/* Noise Overlay */}
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <span className="text-sm text-[#8B5CF6] font-medium tracking-wider uppercase mb-4 block">
+            Trusted By
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#E5E7EB]">
+            Our Valued{' '}
+            <span className="gradient-text">Partners</span>
+          </h2>
+          <p className="text-[#9CA3AF] text-lg max-w-3xl mx-auto leading-relaxed">
+            We&apos;re proud to collaborate with industry-leading organizations who trust us 
+            to deliver exceptional results.
+          </p>
+        </motion.div>
+
+        {/* Partners Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+          {partners.map((partner, index) => (
+            <PartnerLogo
+              key={partner.name}
+              name={partner.name}
+              initials={partner.initials}
+              index={index}
+            />
+          ))}
+        </div>
+
+        {/* Stats Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mt-20 glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden"
+        >
+          {/* Gradient accent line */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]" />
+          
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">98%</div>
+              <p className="text-[#9CA3AF]">Client Retention Rate</p>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">15+</div>
+              <p className="text-[#9CA3AF]">Countries Served</p>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">24/7</div>
+              <p className="text-[#9CA3AF]">Support Available</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
