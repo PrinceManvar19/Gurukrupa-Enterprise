@@ -33,14 +33,14 @@ export function Footer() {
   return (
     <footer className="relative pt-20 pb-8 overflow-hidden">
       {/* Top Border */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#8B5CF6]/50 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
       
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#05070D] to-[#0B0F1A]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary" />
       
       {/* Gradient Orbs */}
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#3B82F6]/5 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#8B5CF6]/5 rounded-full blur-[180px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[180px]" />
       
       {/* Noise Overlay */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
@@ -57,7 +57,7 @@ export function Footer() {
             >
               Gurukrupa
             </motion.a>
-            <p className="text-[#9CA3AF] text-sm leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Building trust through innovation. We deliver cutting-edge solutions 
               that transform businesses and create lasting partnerships.
             </p>
@@ -68,7 +68,7 @@ export function Footer() {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#9CA3AF] hover:text-[#E5E7EB] hover:border-[#8B5CF6]/50 transition-all duration-300"
+                  className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-all duration-300"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.label}
@@ -81,13 +81,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#E5E7EB]">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-[#9CA3AF] hover:text-[#8B5CF6] transition-colors text-sm"
+                    className="text-muted-foreground hover:text-accent transition-colors text-sm"
                   >
                     {link.name}
                   </a>
@@ -98,11 +98,11 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#E5E7EB]">Services</h4>
+            <h4 className="text-lg font-semibold mb-6 text-foreground">Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="text-[#9CA3AF] text-sm">
+                  <span className="text-muted-foreground text-sm">
                     {service}
                   </span>
                 </li>
@@ -112,31 +112,31 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-[#E5E7EB]">Contact</h4>
+            <h4 className="text-lg font-semibold mb-6 text-foreground">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-[#8B5CF6] mt-0.5" />
+                <Mail className="w-5 h-5 text-accent mt-0.5" />
                 <div>
-                  <p className="text-sm text-[#9CA3AF]">Email</p>
-                  <a href="mailto:contact@gurukrupa.com" className="text-sm text-[#E5E7EB] hover:text-[#8B5CF6] transition-colors">
+                  <p className="text-sm text-muted-foreground">Email</p>
+                  <a href="mailto:contact@gurukrupa.com" className="text-sm text-foreground hover:text-accent transition-colors">
                     contact@gurukrupa.com
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-[#8B5CF6] mt-0.5" />
+                <Phone className="w-5 h-5 text-accent mt-0.5" />
                 <div>
-                  <p className="text-sm text-[#9CA3AF]">Phone</p>
-                  <a href="tel:+1234567890" className="text-sm text-[#E5E7EB] hover:text-[#8B5CF6] transition-colors">
+                  <p className="text-sm text-muted-foreground">Phone</p>
+                  <a href="tel:+1234567890" className="text-sm text-foreground hover:text-accent transition-colors">
                     +1 (234) 567-890
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#8B5CF6] mt-0.5" />
+                <MapPin className="w-5 h-5 text-accent mt-0.5" />
                 <div>
-                  <p className="text-sm text-[#9CA3AF]">Location</p>
-                  <span className="text-sm text-[#E5E7EB]">Global Presence</span>
+                  <p className="text-sm text-muted-foreground">Location</p>
+                  <span className="text-sm text-foreground">Global Presence</span>
                 </div>
               </li>
             </ul>
@@ -144,16 +144,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#8B5CF6]/10">
+        <div className="pt-8 border-t border-accent/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-[#9CA3AF]">
+            <p className="text-sm text-muted-foreground">
               {currentYear} Gurukrupa Enterprise. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm text-[#9CA3AF] hover:text-[#8B5CF6] transition-colors">
+              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-[#9CA3AF] hover:text-[#8B5CF6] transition-colors">
+              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
                 Terms of Service
               </a>
             </div>

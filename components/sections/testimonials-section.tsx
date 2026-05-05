@@ -70,13 +70,13 @@ export function TestimonialsSection() {
       className="relative py-32 overflow-hidden"
     >
       {/* Premium Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#05070D] via-[#0B0F1A] to-[#05070D]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary to-background" />
       
       {/* Gradient Orbs */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#8B5CF6]/50 to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#8B5CF6]/5 rounded-full blur-[200px]" />
-      <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-[#3B82F6]/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#EC4899]/10 rounded-full blur-[120px]" />
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[200px]" />
+      <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px]" />
       
       {/* Noise Overlay */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
@@ -89,14 +89,14 @@ export function TestimonialsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <span className="text-sm text-[#8B5CF6] font-medium tracking-wider uppercase mb-4 block">
+          <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">
             Testimonials
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#E5E7EB]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
             What Our{' '}
             <span className="gradient-text">Clients Say</span>
           </h2>
-          <p className="text-[#9CA3AF] text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
             Hear from the industry leaders and innovators who have partnered with us 
             to achieve extraordinary results.
           </p>
@@ -112,36 +112,36 @@ export function TestimonialsSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden"
+                className="glass-card rounded-lg p-8 md:p-12 relative overflow-hidden"
               >
                 {/* Gradient accent */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
                 
                 {/* Quote Icon */}
                 <div className="absolute top-8 right-8 md:top-12 md:right-12">
-                  <Quote className="w-12 h-12 text-[#8B5CF6]/20" />
+                  <Quote className="w-12 h-12 text-accent/20" />
                 </div>
 
                 {/* Stars */}
                 <div className="flex gap-1 mb-6">
                   {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#8B5CF6] text-[#8B5CF6]" />
+                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                   ))}
                 </div>
 
                 {/* Content */}
-                <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-8 text-[#E5E7EB]">
+                <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-8 text-foreground">
                   &quot;{testimonials[currentIndex].content}&quot;
                 </blockquote>
 
                 {/* Author */}
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center text-xl font-bold text-white">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-white">
                     {testimonials[currentIndex].name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-semibold text-lg text-[#E5E7EB]">{testimonials[currentIndex].name}</div>
-                    <div className="text-[#9CA3AF]">{testimonials[currentIndex].role}</div>
+                    <div className="font-semibold text-lg text-foreground">{testimonials[currentIndex].name}</div>
+                    <div className="text-muted-foreground">{testimonials[currentIndex].role}</div>
                   </div>
                 </div>
               </motion.div>
@@ -151,10 +151,10 @@ export function TestimonialsSection() {
             <div className="flex justify-center gap-4 mt-8">
               <button
                 onClick={goToPrevious}
-                className="p-3 rounded-full glass-card hover:border-[#8B5CF6]/50 transition-all duration-300 group"
+                className="p-3 rounded-full glass-card hover:border-accent/50 transition-all duration-300 group"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-6 h-6 text-[#9CA3AF] group-hover:text-[#E5E7EB] transition-colors" />
+                <ChevronLeft className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
               </button>
               
               {/* Dots */}
@@ -168,8 +168,8 @@ export function TestimonialsSection() {
                     }}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? 'w-8 bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6]'
-                        : 'w-2 bg-[#1A1F3A] hover:bg-[#8B5CF6]/30'
+                        ? 'w-8 bg-gradient-to-r from-primary to-accent'
+                        : 'w-2 bg-border hover:bg-accent/30'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -178,10 +178,10 @@ export function TestimonialsSection() {
 
               <button
                 onClick={goToNext}
-                className="p-3 rounded-full glass-card hover:border-[#8B5CF6]/50 transition-all duration-300 group"
+                className="p-3 rounded-full glass-card hover:border-accent/50 transition-all duration-300 group"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-6 h-6 text-[#9CA3AF] group-hover:text-[#E5E7EB] transition-colors" />
+                <ChevronRight className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
               </button>
             </div>
           </div>

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
 const inter = Inter({ 
@@ -9,8 +11,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Gurukrupa Enterprise | Building Trust Through Innovation',
-  description: 'Gurukrupa Enterprise - A premium technology company delivering innovative solutions, exceptional experiences, and lasting partnerships.',
+  title: 'Gurukrupa Enterprise | Digital Products & Scalable Tech Solutions',
+  description: 'Gurukrupa Enterprise builds digital products and scalable technology solutions with hands-on service and long-term partnership.',
   generator: 'v0.app',
   keywords: ['innovation', 'technology', 'enterprise', 'solutions', 'partnerships'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a1a',
+  themeColor: '#1E3A8A',
   width: 'device-width',
   initialScale: 1,
 }
@@ -45,9 +47,25 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={`${inter.variable} font-sans antialiased overflow-x-hidden`}>
-        {children}
+    <html lang="en" data-theme="light" className="bg-background font-sans antialiased overflow-x-hidden" suppressHydrationWarning>
+      <body className={`${inter.variable}`}>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            (function() {
+              try {
+                var stored = localStorage.getItem('theme');
+                var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+              } catch (error) {
+                document.documentElement.setAttribute('data-theme', 'light');
+              }
+            })();
+          `}
+        </Script>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

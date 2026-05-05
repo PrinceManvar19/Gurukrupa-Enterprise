@@ -15,15 +15,15 @@ export function CTASection() {
       className="relative py-32 overflow-hidden"
     >
       {/* Premium Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#05070D] via-[#0B0F1A] to-[#05070D]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary to-background" />
       
       {/* Animated Gradient Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r from-[#3B82F6]/20 to-[#8B5CF6]/20 rounded-full blur-[150px] animate-pulse-glow" />
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#EC4899]/15 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#06B6D4]/10 rounded-full blur-[130px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r from-primary/15 to-accent/15 rounded-full blur-[150px] animate-pulse-glow" />
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[130px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
       
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#05070D]/80" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent to-background/80" />
       
       {/* Noise Overlay */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
@@ -40,9 +40,9 @@ export function CTASection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card text-sm text-[#9CA3AF] mb-8 border border-[#8B5CF6]/30"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg glass-card text-sm text-muted-foreground mb-8 border border-accent/30"
           >
-            <Sparkles className="w-4 h-4 text-[#8B5CF6]" />
+            <Sparkles className="w-4 h-4 text-accent" />
             <span>Ready to Transform?</span>
           </motion.div>
 
@@ -51,7 +51,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-[#E5E7EB]"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-foreground"
           >
             Let&apos;s Build{' '}
             <span className="gradient-text">Something</span>
@@ -64,7 +64,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl text-[#9CA3AF] mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             Partner with us to create innovative solutions that drive growth, 
             inspire innovation, and deliver lasting impact for your business.
@@ -79,18 +79,17 @@ export function CTASection() {
           >
             <motion.a
               href="mailto:contact@gurukrupa.com"
-              className="group px-8 py-4 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-medium text-lg relative overflow-hidden inline-flex items-center justify-center gap-2 neon-glow"
+              className="group px-8 py-4 rounded-lg btn-premium text-white font-medium text-lg relative overflow-hidden inline-flex items-center justify-center gap-2 neon-glow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10">Start a Conversation</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.a>
             
             <motion.a
               href="#about"
-              className="px-8 py-4 rounded-full glass-card text-[#E5E7EB] font-medium text-lg hover:border-[#8B5CF6]/50 transition-all duration-300 inline-flex items-center justify-center"
+              className="px-8 py-4 rounded-lg glass-card text-foreground font-medium text-lg hover:border-accent/50 transition-all duration-300 inline-flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -105,21 +104,21 @@ export function CTASection() {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="mt-16 grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
           >
-            <div className="text-center glass-card rounded-2xl p-6">
-              <div className="text-sm text-[#9CA3AF] mb-2">Email</div>
-              <a href="mailto:contact@gurukrupa.com" className="text-[#E5E7EB] hover:gradient-text transition-all duration-300">
+            <div className="text-center glass-card rounded-lg p-6">
+              <div className="text-sm text-muted-foreground mb-2">Email</div>
+              <a href="mailto:contact@gurukrupa.com" className="text-foreground hover:gradient-text transition-all duration-300">
                 contact@gurukrupa.com
               </a>
             </div>
-            <div className="text-center glass-card rounded-2xl p-6">
-              <div className="text-sm text-[#9CA3AF] mb-2">Phone</div>
-              <a href="tel:+1234567890" className="text-[#E5E7EB] hover:gradient-text transition-all duration-300">
+            <div className="text-center glass-card rounded-lg p-6">
+              <div className="text-sm text-muted-foreground mb-2">Phone</div>
+              <a href="tel:+1234567890" className="text-foreground hover:gradient-text transition-all duration-300">
                 +1 (234) 567-890
               </a>
             </div>
-            <div className="text-center glass-card rounded-2xl p-6">
-              <div className="text-sm text-[#9CA3AF] mb-2">Location</div>
-              <span className="text-[#E5E7EB]">Global Presence</span>
+            <div className="text-center glass-card rounded-lg p-6">
+              <div className="text-sm text-muted-foreground mb-2">Location</div>
+              <span className="text-foreground">Global Presence</span>
             </div>
           </motion.div>
         </motion.div>

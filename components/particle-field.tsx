@@ -29,7 +29,7 @@ function ParticleSystem() {
     <Points ref={ref} positions={particlesPosition} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#8B5CF6"
+        color="#0EA5E9"
         size={0.02}
         sizeAttenuation={true}
         depthWrite={false}
@@ -65,11 +65,11 @@ export function ParticleField() {
       <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
         <ambientLight intensity={0.5} />
         <ParticleSystem />
-        <FloatingOrb position={[-4, 2, -2]} color="#8B5CF6" scale={0.8} />
-        <FloatingOrb position={[4, -1, -3]} color="#3B82F6" scale={1} />
-        <FloatingOrb position={[0, 3, -4]} color="#EC4899" scale={0.6} />
-        <FloatingOrb position={[-3, -2, -2]} color="#06B6D4" scale={0.5} />
-        <FloatingOrb position={[5, 1, -5]} color="#8B5CF6" scale={0.7} />
+        <FloatingOrb position={[-4, 2, -2]} color="#0EA5E9" scale={0.8} />
+        <FloatingOrb position={[4, -1, -3]} color="#1E3A8A" scale={1} />
+        <FloatingOrb position={[0, 3, -4]} color="#1E3A8A" scale={0.6} />
+        <FloatingOrb position={[-3, -2, -2]} color="#0EA5E9" scale={0.5} />
+        <FloatingOrb position={[5, 1, -5]} color="#0EA5E9" scale={0.7} />
       </Canvas>
     </div>
   )
