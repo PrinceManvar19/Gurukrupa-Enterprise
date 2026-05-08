@@ -102,23 +102,26 @@ export function CTASection() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="mt-16 grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
+            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
           >
             <div className="text-center glass-card rounded-lg p-6">
               <div className="text-sm text-muted-foreground mb-2">Email</div>
-              <a href="mailto:contact@gurukrupa.com" className="text-foreground hover:gradient-text transition-all duration-300">
-                contact@gurukrupa.com
+              <a
+                href="mailto:gurukrupaenterprise247@gmail.com"
+                className="text-foreground hover:gradient-text transition-all duration-300 block break-words text-sm md:text-base leading-relaxed"
+              >
+                gurukrupaenterprise247@gmail.com
               </a>
             </div>
             <div className="text-center glass-card rounded-lg p-6">
               <div className="text-sm text-muted-foreground mb-2">Phone</div>
-              <a href="tel:+1234567890" className="text-foreground hover:gradient-text transition-all duration-300">
-                +1 (234) 567-890
+              <a href="tel:+918141840404" className="text-foreground hover:gradient-text transition-all duration-300 text-sm md:text-base leading-relaxed">
+                +91 81418 40404
               </a>
             </div>
             <div className="text-center glass-card rounded-lg p-6">
               <div className="text-sm text-muted-foreground mb-2">Location</div>
-              <span className="text-foreground">Global Presence</span>
+              <span className="text-foreground text-sm md:text-base leading-relaxed">Global Presence</span>
             </div>
           </motion.div>
         </motion.div>

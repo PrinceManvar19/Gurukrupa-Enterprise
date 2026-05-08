@@ -1,11 +1,11 @@
-'use client'
+ 'use client'
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from './theme-toggle'
-import logo from '@/Logos/4.jpeg'
+import logo from '@/Logos/4.jpg'
 
 const navItems = [
   { name: 'Home', href: '#hero' },
@@ -63,7 +63,7 @@ export function Navigation() {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-sm text-muted-foreground hover:text-accent transition-colors relative group"
+                className="text-sm text-muted-foreground hover:text-accent transition-colors relative group items-center leading-none flex"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}

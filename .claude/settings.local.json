@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''models/salary_model.py''\\).read\\(\\)\\); print\\(''salary_model OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''models/attendance_model.py''\\).read\\(\\)\\); print\\(''attendance_model OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''routes/admin_salary_routes.py''\\).read\\(\\)\\); print\\(''admin_salary_routes OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''routes/admin_attendance_routes.py''\\).read\\(\\)\\); print\\(''admin_attendance_routes OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''services/attendance_service.py''\\).read\\(\\)\\); print\\(''attendance_service OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''utils/pdf_generator.py''\\).read\\(\\)\\); print\\(''pdf_generator OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''utils/pdf_generator.py'', encoding=''utf-8''\\).read\\(\\)\\); print\\(''pdf_generator OK''\\)\")"
+    ]
+  }
+}
