@@ -45,9 +45,13 @@ function PartnerLogo({ name, initials, index }: { name: string; initials: string
   )
 }
 
-export function PartnersSection() {
+type PartnersMode = 'teaser' | 'full'
+
+export function PartnersSection({ mode = 'full' }: { mode?: PartnersMode }) {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isTeaser = mode === 'teaser'
+  const teaserPartners = partners.slice(0, 6)
 
   return (
     <section
@@ -89,7 +93,7 @@ export function PartnersSection() {
 
         {/* Partners Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          {partners.map((partner, index) => (
+          {(isTeaser ? teaserPartners : partners).map((partner, index) => (
             <PartnerLogo
               key={partner.name}
               name={partner.name}
@@ -99,31 +103,43 @@ export function PartnersSection() {
           ))}
         </div>
 
-        {/* Stats Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-20 glass-card rounded-lg p-8 md:p-12 relative overflow-hidden"
-        >
-          {/* Gradient accent line */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
-          
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">98%</div>
-              <p className="text-muted-foreground">Client Retention Rate</p>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">15+</div>
-              <p className="text-muted-foreground">Countries Served</p>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">24/7</div>
-              <p className="text-muted-foreground">Support Available</p>
-            </div>
+        {/* Teaser CTA */}
+        {isTeaser ? (
+          <div className="mt-10 flex justify-center">
+            <a
+              href="/partners"
+              className="px-8 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
+            >
+              View All Partners
+            </a>
           </div>
-        </motion.div>
+        ) : (
+          /* Stats Banner */
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mt-20 glass-card rounded-lg p-8 md:p-12 relative overflow-hidden"
+          >
+            {/* Gradient accent line */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">98%</div>
+                <p className="text-muted-foreground">Client Retention Rate</p>
+              </div>
+              <div>
+                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">15+</div>
+                <p className="text-muted-foreground">Countries Served</p>
+              </div>
+              <div>
+                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">24/7</div>
+                <p className="text-muted-foreground">Support Available</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   )

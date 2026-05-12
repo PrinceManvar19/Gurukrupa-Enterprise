@@ -49,9 +49,12 @@ const services = [
   },
 ]
 
-export function ServicesSection() {
+type ServicesMode = 'teaser' | 'full'
+
+export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isTeaser = mode === 'teaser'
 
   return (
     <section
@@ -93,7 +96,7 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid ${isTeaser ? 'md:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6`}>
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -125,23 +128,37 @@ export function ServicesSection() {
                     {service.description}
                   </p>
 
-                  {/* Features */}
-                  <div className="flex flex-wrap gap-2">
-                    {service.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium text-foreground border border-accent/20 group-hover:border-accent/40 transition-colors`}
-                        style={{ background: 'var(--brand-green-soft)' }}
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Features (full page only) */}
+                  {!isTeaser && (
+                    <div className="flex flex-wrap gap-2">
+                      {service.features.map((feature) => (
+                        <span
+                          key={feature}
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium text-foreground border border-accent/20 group-hover:border-accent/40 transition-colors`}
+                          style={{ background: 'var(--brand-green-soft)' }}
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Teaser CTA */}
+        {isTeaser && (
+          <div className="mt-10 flex justify-center">
+            <a
+              href="/services"
+              className="px-8 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
+            >
+              View All Services
+            </a>
+          </div>
+        )}
       </div>
     </section>
   )

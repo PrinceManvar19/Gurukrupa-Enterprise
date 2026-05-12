@@ -3,16 +3,20 @@ import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
+import Header from '@/components/layout/Header'
+import { Footer } from '@/components/sections/footer'
+
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter'
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
   title: 'Gurukrupa Enterprise | Digital Products & Scalable Tech Solutions',
-  description: 'Gurukrupa Enterprise builds digital products and scalable technology solutions with hands-on service and long-term partnership.',
+  description:
+    'Gurukrupa Enterprise builds digital products and scalable technology solutions with hands-on service and long-term partnership.',
   generator: 'v0.app',
   keywords: ['innovation', 'technology', 'enterprise', 'solutions', 'partnerships'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
@@ -47,7 +51,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" data-theme="light" className="bg-background font-sans antialiased overflow-x-hidden" suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="light"
+      className="bg-background font-sans antialiased overflow-x-hidden"
+      suppressHydrationWarning
+    >
       <body className={`${inter.variable}`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {`
@@ -63,9 +72,14 @@ export default function RootLayout({
             })();
           `}
         </Script>
+
         <ThemeProvider>
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
+
+
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

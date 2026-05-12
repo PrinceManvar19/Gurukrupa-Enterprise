@@ -8,13 +8,14 @@ import { ThemeToggle } from './theme-toggle'
 import logo from '@/Logos/4.jpg'
 
 const navItems = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Achievements', href: '#achievements' },
-  { name: 'Partners', href: '#partners' },
-  { name: 'Services', href: '#services' },
-  { name: 'Testimonials', href: '#testimonials' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Products', href: '/products' },
+  { name: 'Achievements', href: '/achievements' },
+  { name: 'Partners', href: '/partners' },
+  { name: 'Testimonials', href: '/testimonials' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export function Navigation() {
@@ -43,7 +44,7 @@ export function Navigation() {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <motion.a
-            href="#hero"
+            href="/"
             className="inline-flex items-center rounded-lg bg-white/95 px-2 py-1 shadow-sm ring-1 ring-primary/10 transition-all hover:ring-accent/35"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -80,7 +81,7 @@ export function Navigation() {
 
           {/* CTA Button */}
           <motion.a
-            href="#contact"
+            href="/contact"
             className="hidden lg:block px-6 py-2.5 rounded-lg btn-premium text-primary-foreground text-sm font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -123,7 +124,7 @@ export function Navigation() {
                   </motion.a>
                 ))}
                 <motion.a
-            href="#contact"
+                  href="/contact"
                   className="mt-4 px-8 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium text-center neon-glow"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

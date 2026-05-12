@@ -222,7 +222,7 @@ export function HeroSection() {
           className="flex gap-4 justify-center flex-col sm:flex-row"
         >
           <motion.a
-            href="#about"
+            href="/about"
             className="group px-8 py-4 rounded-lg btn-premium text-white font-medium text-lg relative overflow-hidden neon-glow"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -232,7 +232,7 @@ export function HeroSection() {
           </motion.a>
 
           <motion.a
-            href="#services"
+            href="/services"
             className="px-8 py-4 rounded-lg border border-accent/50 text-accent font-medium text-lg hover:bg-accent/10 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

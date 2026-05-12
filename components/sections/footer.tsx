@@ -11,11 +11,11 @@ const socialLinks = [
 ]
 
 const quickLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Achievements', href: '#achievements' },
-  { name: 'Testimonials', href: '#testimonials' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Achievements', href: '/achievements' },
+  { name: 'Testimonials', href: '/testimonials' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 const services = [
@@ -51,7 +51,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <motion.a
-              href="#hero"
+              href="/"
               className="text-2xl font-bold gradient-text inline-block mb-4"
               whileHover={{ scale: 1.05 }}
             >

@@ -49,9 +49,14 @@ const achievements = [
   },
 ]
 
-export function AchievementsSection() {
+type AchievementsMode = 'teaser' | 'full'
+
+export function AchievementsSection({ mode = 'full' }: { mode?: AchievementsMode }) {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+
+  const isTeaser = mode === 'teaser'
+  const achievementsToRender = isTeaser ? achievements.slice(0, 3) : achievements
 
   return (
     <section
@@ -95,7 +100,7 @@ export function AchievementsSection() {
           {/* Timeline Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-primary md:-translate-x-px" />
 
-          {achievements.map((achievement, index) => (
+          {achievementsToRender.map((achievement, index) => (
             <motion.div
               key={achievement.year}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
