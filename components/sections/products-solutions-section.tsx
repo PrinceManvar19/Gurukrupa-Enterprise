@@ -12,57 +12,97 @@ import {
   Globe,
   Wrench,
   Layers,
+  Smartphone,
+  ArrowRight,
 } from 'lucide-react'
 
-const solutionCards = [
+type Product = {
+  name: string
+  url?: string
+  description: string
+  icon: React.ComponentType<{ className?: string }>
+  gradient: string
+  ctaLabel: string
+}
+
+type Solution = {
+  title: string
+  description: string
+  icon: React.ComponentType<{ className?: string }>
+  gradient: string
+  ctaLabel: string
+}
+
+const products: Product[] = [
   {
-    icon: Layers,
-    title: 'SWAS Delivery Model',
-    description:
-      'Software WITH a Service—hands-on implementation, ongoing optimization, and measurable business outcomes.',
-    gradient: 'from-primary to-accent',
-    points: ['Strategy → Execution', 'Continuous improvement', 'Team enablement'],
-  },
-  {
-    icon: Workflow,
-    title: 'Enterprise Workflow Systems',
-    description:
-      'Automation and workflow platforms that reduce manual work and increase operational velocity.',
-    gradient: 'from-accent to-primary',
-    points: ['Process automation', 'Role-based approvals', 'Audit-ready reporting'],
-  },
-  {
+    name: 'Go Digital Chat',
+    url: 'https://godigitalchat.com/',
+    description: 'AI-powered communication and customer engagement platform for businesses.',
     icon: Sparkles,
-    title: 'AI & Data Intelligence',
-    description:
-      'Actionable analytics and AI-powered features that turn data into decisions.',
     gradient: 'from-primary to-accent',
-    points: ['Predictive insights', 'Smart recommendations', 'Performance dashboards'],
+    ctaLabel: 'Visit Product',
   },
   {
-    icon: Boxes,
-    title: 'Scalable Product Platforms',
-    description:
-      'Modern architectures for products and internal tools built to scale with your roadmap.',
+    name: 'Mod GST',
+    url: 'https://modgst.gurukrupaenterprise.com/',
+    description: 'Smart GST billing and taxation management solution for modern businesses.',
+    icon: Shield,
     gradient: 'from-accent to-primary',
-    points: ['APIs & integrations', 'Secure deployments', 'Cloud-ready design'],
+    ctaLabel: 'Visit Product',
+  },
+  {
+    name: 'Follow-up.io',
+    url: 'https://www.followupio.com/',
+    description: 'Automated customer follow-up and lead management platform.',
+    icon: Workflow,
+    gradient: 'from-primary to-accent',
+    ctaLabel: 'Visit Product',
+  },
+  {
+    name: 'Scratch DIGI',
+    description: 'Digital business management and operational workflow platform.',
+    icon: Layers,
+    gradient: 'from-accent to-primary',
+    ctaLabel: 'Discuss Your Need',
+  },
+  {
+    name: 'Mob Order',
+    description: 'Mobile-first smart ordering and management system.',
+    icon: Globe,
+    gradient: 'from-primary to-accent',
+    ctaLabel: 'Discuss Your Need',
+  },
+  {
+    name: 'CriZone',
+    description: 'Sports/community engagement and management platform.',
+    icon: Gauge,
+    gradient: 'from-accent to-primary',
+    ctaLabel: 'Discuss Your Need',
+  },
+  {
+    name: 'Additional Internal / Custom Enterprise Solutions',
+    description: 'Bespoke enterprise systems designed for your unique operations, compliance, and integration needs.',
+    icon: Wrench,
+    gradient: 'from-primary to-accent',
+    ctaLabel: 'Discuss Your Need',
   },
 ]
 
-const useCases = [
-  { icon: Gauge, title: 'Operational Efficiency', description: 'Automate processes and standardize outcomes across teams.' },
-  { icon: Globe, title: 'Global Delivery', description: 'Support multi-region operations with reliable systems.' },
-  { icon: Code2, title: 'Digital Product Build', description: 'Ship high-performance web/mobile experiences for customers.' },
-  { icon: Wrench, title: 'Engineering Enablement', description: 'Accelerate your team with best practices and tooling.' },
-]
-
-const industries = [
-  'Technology & SaaS',
-  'Finance & FinTech',
-  'Healthcare & Life Sciences',
-  'Logistics & Supply Chain',
-  'Manufacturing',
-  'Education & EdTech',
+const solutions: Solution[] = [
+  {
+    title: 'Mobile Application Development',
+    description: 'Enterprise-grade mobile apps built for reliability, offline workflows, and seamless integrations.',
+    icon: Smartphone,
+    gradient: 'from-primary to-accent',
+    ctaLabel: 'Request a Mobile Plan',
+  },
+  {
+    title: 'Web Application Development',
+    description: 'Scalable web applications and platforms designed for performance, security, and long-term maintainability.',
+    icon: Code2,
+    gradient: 'from-accent to-primary',
+    ctaLabel: 'Request a Web Blueprint',
+  },
 ]
 
 export function ProductsSolutionsSection() {
@@ -71,213 +111,224 @@ export function ProductsSolutionsSection() {
 
   return (
     <section id="products" ref={sectionRef} className="relative py-32 overflow-hidden">
-      {/* Premium Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary to-background" />
-
-      {/* Gradient Orbs */}
       <div className="absolute top-1/4 right-1/4 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[160px]" />
       <div className="absolute bottom-1/4 left-1/4 w-[420px] h-[420px] bg-accent/10 rounded-full blur-[140px]" />
-
-      {/* Noise Overlay */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">
             Products / Solutions
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Platforms for <span className="gradient-text">SWAS</span> growth
+            Premium platforms built for <span className="gradient-text">enterprise</span> performance
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            Build a future-proof product ecosystem—secure, scalable, and designed around measurable business outcomes.
+            Real product capabilities for communication, billing, automation, operations, and industry engagement—delivered with
+            enterprise-grade engineering.
           </p>
         </motion.div>
 
-        {/* Solution Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {solutionCards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group"
-            >
-              <div className="glass-card rounded-lg p-8 h-full card-hover relative overflow-hidden">
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className={`absolute inset-0 bg-gradient-to-r ${card.gradient} opacity-20`} />
-                </div>
+        {/* Products Showcase */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          {products.map((p, index) => {
+            const Icon = p.icon
+            const isFeatured = index === 0 || index === 1 || index === 2
 
-                <div className={`absolute -inset-1 rounded-lg bg-gradient-to-r ${card.gradient} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
-
-                <div className="relative z-10">
+            return (
+              <motion.div
+                key={p.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.08, duration: 0.6 }}
+                className="group"
+              >
+                <div
+                  className={`glass-card rounded-lg p-7 h-full card-hover relative overflow-hidden ${
+                    isFeatured ? 'ring-1 ring-accent/30' : ''
+                  }`}
+                >
+                  {/* Glow border animation */}
                   <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
                   >
-                    <card.icon className="w-8 h-8 text-white" />
+                    <div className={`absolute -inset-[1px] rounded-lg bg-gradient-to-r ${p.gradient} opacity-30 blur-md`} />
+                    <div
+                      className={`absolute -inset-[1px] rounded-lg bg-gradient-to-r ${p.gradient} opacity-30`} 
+                      style={{ animation: 'glow-border 2.2s linear infinite' }}
+                    />
                   </div>
 
-                  <h3 className="text-2xl font-semibold mb-3 text-foreground group-hover:gradient-text transition-all duration-300">
-                    {card.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-5 leading-relaxed">{card.description}</p>
+                  <div className="relative z-10">
+                    <div
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${p.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
 
-                  <div className="flex flex-col gap-2">
-                    {card.points.map((p) => (
-                      <div key={p} className="flex items-center gap-2 text-sm text-foreground/90">
+                    <div className="flex items-center gap-2 mb-3">
+                      <h3 className="text-2xl font-semibold text-foreground group-hover:gradient-text transition-all duration-300">
+                        {p.name}
+                      </h3>
+                      {isFeatured ? (
+                        <span className="ml-auto px-3 py-1 rounded-full text-xs font-medium border border-accent/30 text-accent bg-accent/10">
+                          Featured
+                        </span>
+                      ) : null}
+                    </div>
+
+                    <p className="text-muted-foreground leading-relaxed mb-6">{p.description}</p>
+
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-2 text-sm text-foreground/90">
                         <span className="w-2 h-2 rounded-full bg-accent shadow-[0_0_18px_rgba(14,165,233,0.35)]" />
-                        {p}
+                        <span className="hidden sm:inline">Enterprise-ready</span>
                       </div>
-                    ))}
+
+                      {p.url ? (
+                        <motion.a
+                          href={p.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center px-4 py-2 rounded-lg btn-premium text-primary-foreground text-sm font-medium neon-glow"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          {p.ctaLabel}
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </motion.a>
+                      ) : (
+                        <motion.a
+                          href="/contact"
+                          className="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-accent/50 text-accent text-sm font-medium hover:bg-accent/10 transition-colors"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          {p.ctaLabel}
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
+
+                  {/* floating ui effect */}
+                  <div className="absolute -bottom-10 -right-10 w-36 h-36 rounded-full bg-accent/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
 
-        {/* Use cases */}
-        <div className="grid lg:grid-cols-2 gap-10 items-start mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
-          >
-            <div className="glass-card rounded-lg p-8 card-hover relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+        {/* Dedicated Solutions Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="mb-8"
+        >
+          <div className="flex items-start justify-between gap-6 flex-col lg:flex-row">
+            <div className="max-w-2xl">
+              <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">Digital Transformation Solutions</span>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                Future-ready platforms that transform your operations
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Mobile and web solutions engineered for enterprise reliability, automation-first workflows, and scalable growth.
+              </p>
+            </div>
+            <div className="glass-card rounded-xl p-6 card-hover relative overflow-hidden w-full lg:w-[420px]">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
               <div className="relative z-10">
-                <div className="text-sm text-accent font-medium tracking-wider uppercase mb-3">
-                  Use cases
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                    <Boxes className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-accent text-sm font-medium tracking-wider uppercase">Delivery Approach</div>
+                    <div className="text-foreground font-semibold text-lg">SWAS Execution</div>
+                  </div>
                 </div>
-                <h3 className="text-3xl font-bold mb-4 text-foreground">
-                  Designed for outcomes
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Whether you need automation, analytics, or full product delivery—our solutions scale with your roadmap.
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Software WITH a Service—hands-on delivery, integration support, and continuous optimization after go-live.
                 </p>
               </div>
             </div>
+          </div>
+        </motion.div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              {useCases.map((u, index) => (
-                <motion.div
-                  key={u.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: index * 0.05, duration: 0.6 }}
-                  className="glass-card rounded-lg p-6 card-hover relative overflow-hidden"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-accent/20 flex items-center justify-center">
-                      <u.icon className="w-5 h-5 text-accent" />
-                    </div>
-                    <h4 className="text-lg font-semibold">{u.title}</h4>
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{u.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {solutions.map((s, index) => {
+            const Icon = s.icon
+            return (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 24 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.1 + index * 0.12, duration: 0.65 }}
+                className="group"
+              >
+                <div className="glass-card rounded-xl p-7 card-hover relative overflow-hidden h-full">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${s.gradient} opacity-0 group-hover:opacity-15 transition-opacity`} />
+                  <div className={`absolute -inset-1 rounded-xl bg-gradient-to-r ${s.gradient} opacity-0 group-hover:opacity-25 blur-xl transition-opacity`} />
 
-          {/* Product Mockups (stylized) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative"
-          >
-            <div className="glass-card rounded-lg p-8 card-hover relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-accent/10 opacity-70" />
-              <div className="absolute -top-20 -right-20 w-56 h-56 rounded-full bg-accent/10 blur-[90px]" />
-              <div className="absolute -bottom-20 -left-20 w-56 h-56 rounded-full bg-primary/10 blur-[90px]" />
-
-              <div className="relative z-10">
-                <div className="text-sm text-accent font-medium tracking-wider uppercase mb-3">
-                  Product mockups
-                </div>
-                <h3 className="text-3xl font-bold mb-4 text-foreground">Security-first dashboards</h3>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  Placeholder panels that preserve the futuristic identity while you add real screenshots later.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-lg border border-accent/20 bg-background/40 p-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs text-muted-foreground">Analytics</span>
-                      <Shield className="w-4 h-4 text-accent" />
-                    </div>
-                    <div className="h-28 rounded-md bg-gradient-to-r from-primary/20 to-accent/20 animate-pulse-glow" />
-                    <div className="mt-3 h-2 rounded bg-border" />
-                    <div className="mt-2 h-2 rounded bg-border/70" />
-                  </div>
-
-                  <div className="rounded-lg border border-accent/20 bg-background/40 p-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs text-muted-foreground">Automation</span>
-                      <Sparkles className="w-4 h-4 text-accent" />
-                    </div>
-                    <div className="h-28 rounded-md bg-gradient-to-r from-accent/20 to-primary/20 animate-pulse-glow" />
-                    <div className="mt-3 h-2 rounded bg-border" />
-                    <div className="mt-2 h-2 rounded bg-border/70" />
-                  </div>
-
-                  <div className="col-span-2 rounded-lg border border-accent/20 bg-background/40 p-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs text-muted-foreground">Integration Ecosystem</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_18px_rgba(30,58,138,0.35)]" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_18px_rgba(14,165,233,0.35)]" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient} flex items-center justify-center`}>
+                        <Icon className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-2xl font-semibold text-foreground group-hover:gradient-text transition-all duration-300">{s.title}</h4>
+                        <p className="text-muted-foreground text-sm">Enterprise-grade delivery</p>
                       </div>
                     </div>
-                    <div className="h-20 rounded-md bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10" />
-                  </div>
-                </div>
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {industries.map((i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1.5 rounded-full text-xs font-medium text-foreground border border-accent/20"
-                      style={{ background: 'var(--brand-green-soft)' }}
+                    <p className="text-muted-foreground leading-relaxed mb-6">{s.description}</p>
+
+                    <motion.a
+                      href="/contact"
+                      className="inline-flex items-center justify-center px-6 py-3 rounded-lg btn-premium text-primary-foreground text-sm font-medium neon-glow w-full sm:w-auto"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {i}
-                    </span>
-                  ))}
+                      {s.ctaLabel}
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </motion.a>
+                  </div>
+
+                  <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-accent/10 blur-[70px] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </div>
-            </div>
-          </motion.div>
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 22 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center"
+          transition={{ duration: 0.75, delay: 0.1 }}
+          className="text-center mt-14"
         >
           <div className="glass-card rounded-lg p-8 md:p-12 relative overflow-hidden card-hover">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 opacity-60 pointer-events-none" />
             <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-3 text-foreground">
-                Ready to build your next platform?
-              </h3>
+              <h3 className="text-3xl font-bold mb-3 text-foreground">Ready to deploy your next platform?</h3>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Talk to Gurukrupa Enterprise about a solution blueprint tailored to your organization.
+                Contact Gurukrupa Enterprise for a solution blueprint tailored to your organization’s automation, integration, and enterprise needs.
               </p>
               <a
                 href="/contact"
                 className="mt-6 inline-flex items-center justify-center px-10 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
               >
                 Request a Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </div>
           </div>
@@ -286,3 +337,4 @@ export function ProductsSolutionsSection() {
     </section>
   )
 }
+
