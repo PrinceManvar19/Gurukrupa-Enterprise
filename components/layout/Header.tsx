@@ -9,7 +9,6 @@ import { ChevronDown, Menu, X } from 'lucide-react'
 
 import { ThemeToggle } from '@/components/theme-toggle'
 import headerDarkLogo from '@/Logos/Dark logo 3.png'
-import headerLightLogo from '@/Logos/Light logo 3.png'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -107,17 +106,10 @@ export default function Header() {
               <Link href="/" aria-label="Gurukrupa Enterprise home" className="relative z-10 inline-flex items-center">
                 <span className="brand-logo-stack">
                   <Image
-                    src={headerLightLogo}
+                    src={headerDarkLogo}
                     alt="Gurukrupa Enterprise"
                     priority
-                    className="brand-logo-image brand-logo-image-light h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
-                  />
-                  <Image
-                    src={headerDarkLogo}
-                    alt=""
-                    priority
-                    aria-hidden
-                    className="brand-logo-image brand-logo-image-dark h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
+                    className="brand-logo-image brand-logo-image-single h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
                   />
                 </span>
                 <span className="sr-only">Gurukrupa Enterprise</span>

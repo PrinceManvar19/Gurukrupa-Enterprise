@@ -501,6 +501,10 @@
   opacity: 1;
 }
 
+.brand-logo-image-single {
+  opacity: 1;
+}
+
 .brand-logo-shell:hover .brand-logo-image {
   filter:
     drop-shadow(0 10px 20px rgba(15, 23, 42, 0.14))
@@ -523,6 +527,10 @@
 
 [data-theme="dark"] .brand-logo-image-dark,
 [data-theme="dark"] .footer-brand-logo-dark {
+  opacity: 1;
+}
+
+[data-theme="dark"] .brand-logo-image-single {
   opacity: 1;
 }
 
