@@ -8,7 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Menu, X } from 'lucide-react'
 
 import { ThemeToggle } from '@/components/theme-toggle'
-import logo from '@/Logos/4.png'
+import headerDarkLogo from '@/Logos/Dark logo 3.png'
+import headerLightLogo from '@/Logos/Light logo 3.png'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -104,12 +105,21 @@ export default function Header() {
               transition={{ duration: 0.24, ease: 'easeOut' }}
             >
               <Link href="/" aria-label="Gurukrupa Enterprise home" className="relative z-10 inline-flex items-center">
-                <Image
-                  src={logo}
-                  alt="Gurukrupa Enterprise"
-                  priority
-                  className="brand-logo-image h-[36px] w-auto object-contain sm:h-[46px]"
-                />
+                <span className="brand-logo-stack">
+                  <Image
+                    src={headerLightLogo}
+                    alt="Gurukrupa Enterprise"
+                    priority
+                    className="brand-logo-image brand-logo-image-light h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
+                  />
+                  <Image
+                    src={headerDarkLogo}
+                    alt=""
+                    priority
+                    aria-hidden
+                    className="brand-logo-image brand-logo-image-dark h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
+                  />
+                </span>
                 <span className="sr-only">Gurukrupa Enterprise</span>
               </Link>
             </motion.div>

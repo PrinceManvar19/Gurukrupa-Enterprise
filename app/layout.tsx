@@ -20,22 +20,32 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   keywords: ['innovation', 'technology', 'enterprise', 'solutions', 'partnerships'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
       {
+        url: '/favicon.ico',
+        sizes: '32x32',
+      },
+      {
         url: '/icon-light-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
         media: '(prefers-color-scheme: light)',
       },
       {
         url: '/icon-dark-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/icon-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 

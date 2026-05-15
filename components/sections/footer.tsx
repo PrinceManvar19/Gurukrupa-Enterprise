@@ -1,7 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Linkedin, Twitter, Instagram, Github, Mail, MapPin, Phone } from 'lucide-react'
+
+import footerDarkLogo from '@/Logos/Dark logo 1.png'
+import footerLightLogo from '@/Logos/Light logo 1.png'
 
 const socialLinks = [
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
@@ -36,20 +40,43 @@ export function Footer() {
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
+        <motion.a
+          href="/"
+          aria-label="Gurukrupa Enterprise home"
+          className="footer-brand-logo-shell mx-auto mb-8 inline-flex items-center justify-center"
+          whileHover={{ scale: 1.015, y: -1 }}
+          transition={{ duration: 0.24, ease: 'easeOut' }}
+        >
+          <span className="footer-logo-stack">
+            <Image
+              src={footerLightLogo}
+              alt="Gurukrupa Enterprise"
+              className="footer-brand-logo footer-brand-logo-light h-[68px] w-auto object-contain md:h-[82px]"
+            />
+            <Image
+              src={footerDarkLogo}
+              alt=""
+              aria-hidden
+              className="footer-brand-logo footer-brand-logo-dark h-[68px] w-auto object-contain md:h-[82px]"
+            />
+          </span>
+        </motion.a>
+
+        <p className="mx-auto mb-14 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
+          Building trust through innovation. We deliver cutting-edge solutions
+          that transform businesses and create lasting partnerships.
+        </p>
+
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <motion.a
-              href="/"
-              className="text-2xl font-bold gradient-text inline-block mb-4"
-              whileHover={{ scale: 1.05 }}
-            >
-              Gurukrupa
-            </motion.a>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground/80 mb-4">
+              Gurukrupa Enterprise
+            </p>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Building trust through innovation. We deliver cutting-edge solutions 
-              that transform businesses and create lasting partnerships.
+              Modern software, AI workflows, and scalable digital products for
+              teams that want clean execution and durable systems.
             </p>
             
             {/* Social Links */}

@@ -5,7 +5,8 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from './theme-toggle'
-import logo from '@/Logos/4.png'
+import headerDarkLogo from '@/Logos/Dark logo 3.png'
+import headerLightLogo from '@/Logos/Light logo 3.png'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -50,12 +51,21 @@ export function Navigation() {
             whileTap={{ scale: 0.95 }}
             aria-label="Gurukrupa Enterprise home"
           >
-            <Image
-              src={logo}
-              alt="Gurukrupa Enterprise"
-              priority
-              className="brand-logo-image relative z-10 h-9 w-auto object-contain sm:h-12"
-            />
+            <span className="brand-logo-stack">
+              <Image
+                src={headerLightLogo}
+                alt="Gurukrupa Enterprise"
+                priority
+                className="brand-logo-image brand-logo-image-light h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
+              />
+              <Image
+                src={headerDarkLogo}
+                alt=""
+                priority
+                aria-hidden
+                className="brand-logo-image brand-logo-image-dark h-[38px] w-auto object-contain sm:h-[46px] lg:h-[50px]"
+              />
+            </span>
           </motion.a>
 
           {/* Desktop Navigation */}
