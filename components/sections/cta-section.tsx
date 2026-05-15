@@ -78,7 +78,7 @@ export function CTASection() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.a
-              href="mailto:contact@gurukrupa.com"
+              href="#lead-inquiry"
               className="group px-8 py-4 rounded-lg btn-premium text-white font-medium text-lg relative overflow-hidden inline-flex items-center justify-center gap-2 neon-glow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -97,33 +97,6 @@ export function CTASection() {
             </motion.a>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
-          >
-            <div className="text-center glass-card rounded-lg p-6">
-              <div className="text-sm text-muted-foreground mb-2">Email</div>
-              <a
-                href="mailto:gurukrupaenterprise247@gmail.com"
-                className="text-foreground hover:gradient-text transition-all duration-300 block break-words text-sm md:text-base leading-relaxed"
-              >
-                gurukrupaenterprise247@gmail.com
-              </a>
-            </div>
-            <div className="text-center glass-card rounded-lg p-6">
-              <div className="text-sm text-muted-foreground mb-2">Phone</div>
-              <a href="tel:+918141840404" className="text-foreground hover:gradient-text transition-all duration-300 text-sm md:text-base leading-relaxed">
-                +91 81418 40404
-              </a>
-            </div>
-            <div className="text-center glass-card rounded-lg p-6">
-              <div className="text-sm text-muted-foreground mb-2">Location</div>
-              <span className="text-foreground text-sm md:text-base leading-relaxed">Global Presence</span>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

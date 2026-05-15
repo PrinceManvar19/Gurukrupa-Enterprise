@@ -117,9 +117,14 @@ export function TechStackSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="mt-10 text-center text-muted-foreground text-sm"
+          className="mt-10 flex justify-center"
         >
-          Hover for glow interactions • Smooth reveal on scroll
+          <a
+            href="/solutions"
+            className="px-8 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
+          >
+            Learn More
+          </a>
         </motion.div>
       </div>
     </section>

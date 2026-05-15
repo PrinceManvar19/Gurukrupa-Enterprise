@@ -5,19 +5,45 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 
 import { ThemeToggle } from '@/components/theme-toggle'
-import logo from '@/Logos/4.jpg'
+import logo from '@/Logos/4.png'
 
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Products', href: '/products' },
+  {
+    name: 'Products',
+    href: '/products',
+    dropdown: [
+      { name: 'Go Digital Chat', href: 'https://godigitalchat.com/' },
+      { name: 'Mod GST', href: 'https://modgst.gurukrupaenterprise.com/' },
+      { name: 'Follow-up.io', href: 'https://www.followupio.com/' },
+      { name: 'All Products', href: '/products' },
+    ],
+  },
+  {
+    name: 'Services',
+    href: '/services',
+    dropdown: [
+      { name: 'Web Development', href: '/services' },
+      { name: 'Mobile App Development', href: '/services' },
+      { name: 'AI Agent Development', href: '/services' },
+      { name: 'All Services', href: '/services' },
+    ],
+  },
+  {
+    name: 'Solutions',
+    href: '/solutions',
+    dropdown: [
+      { name: 'Mobile App Development', href: '/solutions' },
+      { name: 'Web App Development', href: '/solutions' },
+      { name: 'SWAS Delivery Model', href: '/solutions' },
+    ],
+  },
   { name: 'Achievements', href: '/achievements' },
   { name: 'Partners', href: '/partners' },
-  { name: 'Testimonials', href: '/testimonials' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -67,32 +93,22 @@ export default function Header() {
         >
           <nav
             className={
-              'h-full flex items-center justify-between px-5 rounded-2xl glass-card '
-              + (isScrolled ? 'opacity-100' : 'opacity-98')
+              'ge-navbar h-full flex items-center justify-between rounded-2xl px-4 sm:px-5 '
+              + (isScrolled ? 'ge-navbar-scrolled' : '')
             }
-            style={{
-              background: 'rgba(7, 15, 35, 0.82)',
-              backdropFilter: 'blur(14px)',
-              WebkitBackdropFilter: 'blur(14px)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: isScrolled
-                ? '0 12px 42px rgba(0,0,0,0.52)'
-                : '0 8px 30px rgba(0,0,0,0.35)',
-              transition: 'all 0.3s ease',
-            }}
           >
             {/* Left: Logo */}
             <motion.div
-              className="flex items-center"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
+              className="brand-logo-shell flex items-center"
+              whileHover={{ scale: 1.025, y: -1 }}
+              transition={{ duration: 0.24, ease: 'easeOut' }}
             >
-              <Link href="/" aria-label="Gurukrupa Enterprise home" className="inline-flex items-center">
+              <Link href="/" aria-label="Gurukrupa Enterprise home" className="relative z-10 inline-flex items-center">
                 <Image
                   src={logo}
                   alt="Gurukrupa Enterprise"
                   priority
-                  className="h-[42px] w-auto object-contain sm:h-[50px]"
+                  className="brand-logo-image h-[36px] w-auto object-contain sm:h-[46px]"
                 />
                 <span className="sr-only">Gurukrupa Enterprise</span>
               </Link>
@@ -103,45 +119,65 @@ export default function Header() {
               <div className="flex items-center gap-2">
                 {navItems.map((item) => {
                   const active = isActivePath(pathname, item.href)
+                  const hasDropdown = 'dropdown' in item && item.dropdown
                   return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={
-                        'relative px-3 py-2 rounded-full text-sm transition-all duration-300 '
-                        + (active
-                          ? 'text-white'
-                          : 'text-muted-foreground hover:text-white/95')
-                      }
-                      aria-current={active ? 'page' : undefined}
-                    >
-                      <span className="relative z-10 font-medium tracking-wide">{item.name}</span>
-                      {/* active pill */}
-                      <span
+                    <div key={item.name} className="group relative">
+                      <Link
+                        href={item.href}
                         className={
-                          'absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 '
-                          + (active ? 'opacity-100' : 'group-hover:opacity-100')
+                          'relative flex items-center gap-1 px-3 py-2 rounded-full text-sm transition-all duration-300 '
+                          + (active
+                            ? 'text-primary dark:text-white'
+                            : 'text-muted-foreground hover:text-foreground dark:hover:text-white/95')
                         }
-                        style={{
-                          background: active
-                            ? 'rgba(0, 166, 255, 0.18)'
-                            : 'rgba(0, 166, 255, 0.10)',
-                          boxShadow: active
-                            ? '0 0 24px rgba(0, 166, 255, 0.28)'
-                            : '0 0 0 rgba(0, 166, 255, 0)',
-                        }}
-                      />
-                      {/* underline/glow */}
-                      <span
-                        className="absolute -bottom-0.5 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
-                        style={{
-                          opacity: active ? 1 : 0,
-                          transform: active ? 'scaleX(1)' : 'scaleX(0.2)',
-                          transformOrigin: 'center',
-                          transition: 'all 0.3s ease',
-                        }}
-                      />
-                    </Link>
+                        aria-current={active ? 'page' : undefined}
+                        aria-haspopup={hasDropdown ? 'menu' : undefined}
+                      >
+                        <span className="relative z-10 font-medium tracking-wide">{item.name}</span>
+                        {hasDropdown ? <ChevronDown className="relative z-10 h-3.5 w-3.5 transition-transform group-hover:rotate-180" /> : null}
+                        <span
+                          className={
+                            'absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 '
+                            + (active ? 'opacity-100' : 'group-hover:opacity-100')
+                          }
+                          style={{
+                            background: active
+                              ? 'rgba(0, 166, 255, 0.18)'
+                              : 'rgba(0, 166, 255, 0.10)',
+                            boxShadow: active
+                              ? '0 0 24px rgba(0, 166, 255, 0.28)'
+                              : '0 0 0 rgba(0, 166, 255, 0)',
+                          }}
+                        />
+                        <span
+                          className="absolute -bottom-0.5 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-primary to-accent"
+                          style={{
+                            opacity: active ? 1 : 0,
+                            transform: active ? 'scaleX(1)' : 'scaleX(0.2)',
+                            transformOrigin: 'center',
+                            transition: 'all 0.3s ease',
+                          }}
+                        />
+                      </Link>
+                      {hasDropdown ? (
+                        <div className="invisible absolute left-0 top-full z-50 mt-3 w-60 translate-y-2 rounded-2xl border border-white/10 bg-[#071023]/95 p-2 opacity-0 shadow-2xl shadow-black/35 backdrop-blur-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                          {item.dropdown.map((child) => {
+                            const external = child.href.startsWith('http')
+                            return (
+                              <Link
+                                key={child.name}
+                                href={child.href}
+                                target={external ? '_blank' : undefined}
+                                rel={external ? 'noreferrer' : undefined}
+                                className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-sky-500/12 hover:text-white"
+                              >
+                                {child.name}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      ) : null}
+                    </div>
                   )
                 })}
               </div>
@@ -225,24 +261,46 @@ export default function Header() {
                 <div className="flex flex-col gap-1">
                   {navItems.map((item) => {
                     const active = isActivePath(pathname, item.href)
+                    const hasDropdown = 'dropdown' in item && item.dropdown
                     return (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                      <div key={item.name}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
                         className={
-                          'px-4 py-3 rounded-xl transition-all duration-300 '
+                          'flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 '
                           + (active
-                            ? 'text-white'
-                            : 'text-muted-foreground hover:text-white')
-                        }
-                        style={{
-                          background: active ? 'rgba(0, 166, 255, 0.14)' : 'transparent',
-                          boxShadow: active ? '0 0 24px rgba(0, 166, 255, 0.20)' : 'none',
-                        }}
-                      >
-                        <span className="font-medium">{item.name}</span>
-                      </Link>
+                              ? 'text-primary dark:text-white'
+                              : 'text-muted-foreground hover:text-foreground dark:hover:text-white')
+                          }
+                          style={{
+                            background: active ? 'rgba(0, 166, 255, 0.14)' : 'transparent',
+                            boxShadow: active ? '0 0 24px rgba(0, 166, 255, 0.20)' : 'none',
+                          }}
+                        >
+                          <span className="font-medium">{item.name}</span>
+                          {hasDropdown ? <ChevronDown className="h-4 w-4" /> : null}
+                        </Link>
+                        {hasDropdown ? (
+                          <div className="ml-4 mt-1 border-l border-white/10 pl-3">
+                            {item.dropdown.map((child) => {
+                              const external = child.href.startsWith('http')
+                              return (
+                                <Link
+                                  key={child.name}
+                                  href={child.href}
+                                  target={external ? '_blank' : undefined}
+                                  rel={external ? 'noreferrer' : undefined}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-accent/10 hover:text-white"
+                                >
+                                  {child.name}
+                                </Link>
+                              )
+                            })}
+                          </div>
+                        ) : null}
+                      </div>
                     )
                   })}
 

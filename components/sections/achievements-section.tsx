@@ -138,6 +138,17 @@ export function AchievementsSection({ mode = 'full' }: { mode?: AchievementsMode
             </motion.div>
           ))}
         </div>
+
+        {isTeaser ? (
+          <div className="mt-10 flex justify-center">
+            <a
+              href="/achievements"
+              className="px-8 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
+            >
+              Learn More
+            </a>
+          </div>
+        ) : null}
       </div>
     </section>
   )

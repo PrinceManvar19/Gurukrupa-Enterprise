@@ -97,6 +97,7 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const isTeaser = mode === 'teaser'
+  const servicesToRender = isTeaser ? services.slice(0, 4) : services
 
   return (
     <section
@@ -138,8 +139,8 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
         </motion.div>
 
         {/* Services Grid */}
-        <div className={`grid ${isTeaser ? 'md:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6`}>
-          {services.map((service, index) => (
+        <div className={`grid ${isTeaser ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6`}>
+          {servicesToRender.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
@@ -197,7 +198,7 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
               href="/services"
               className="px-8 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
             >
-              View All Services
+              Learn More
             </a>
           </div>
         )}

@@ -7,7 +7,6 @@ import { PartnersSection } from '@/components/sections/partners-section'
 import { AboutSnippet } from '@/components/sections/about-snippet'
 import { StatsBar } from '@/components/sections/stats-bar'
 
-import { ContactStrip } from '@/components/sections/contact-strip'
 import { AchievementsSection } from '@/components/sections/achievements-section'
 import { WhyChooseUsSection } from '@/components/sections/why-choose-us-section'
 
@@ -15,6 +14,7 @@ import { ProductsSolutionsSection } from '@/components/sections/products-solutio
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { CTASection } from '@/components/sections/cta-section'
 import { TechStackSection } from '@/components/sections/tech-stack-section'
+import { LeadInquiryForm } from '@/components/sections/lead-inquiry-form'
 
 
 
@@ -30,33 +30,30 @@ export default function Home() {
         {/* 3) About Company Preview */}
         <AboutSnippet />
 
-        {/* 4) Services Overview */}
-        <ServicesSection mode="full" />
+        {/* 4) Featured Services Preview */}
+        <ServicesSection mode="teaser" />
 
-        {/* 5) Product/Solutions Showcase */}
-        <ProductsSolutionsSection />
+        {/* 5) Featured Products Preview */}
+        <ProductsSolutionsSection mode="teaser" />
 
-        {/* 6) Why Choose Us */}
-        <WhyChooseUsSection />
-
-        {/* 7) Achievements / Metrics */}
-        <AchievementsSection mode="full" />
-
-        {/* 8) Technology Expertise */}
-        <StatsBar />
-
-        {/* 8.5) Tech Stack Showcase */}
+        {/* 6) Solutions Preview */}
         <TechStackSection />
 
-        {/* 9) Testimonials */}
-        <TestimonialsSection mode="full" />
+        {/* 7) Why Choose Us */}
+        <WhyChooseUsSection />
 
+        {/* 8) Achievement Stats (teaser) */}
+        <AchievementsSection mode="teaser" />
+
+        {/* 9) Testimonials Preview */}
+        <TestimonialsSection mode="featured" />
 
         {/* 10) CTA Banner */}
         <CTASection />
 
-        {/* 11) Contact strip */}
-        <ContactStrip />
+        {/* 11) Lead inquiry form */}
+        <LeadInquiryForm />
+
 
 
 

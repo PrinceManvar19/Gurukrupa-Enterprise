@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from './theme-toggle'
-import logo from '@/Logos/4.jpg'
+import logo from '@/Logos/4.png'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -38,15 +38,15 @@ export function Navigation() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'py-3 bg-background/92 shadow-[0_4px_20px_rgba(0,0,0,0.08)] backdrop-blur-xl border-b border-border' 
+            ? 'py-3 bg-background/72 shadow-[0_14px_36px_rgba(15,23,42,0.10)] backdrop-blur-xl border-b border-border/70' 
             : 'py-5 bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between px-6">
           <motion.a
             href="/"
-            className="inline-flex items-center rounded-lg bg-white/95 px-2 py-1 shadow-sm ring-1 ring-primary/10 transition-all hover:ring-accent/35"
-            whileHover={{ scale: 1.05 }}
+            className="brand-logo-shell inline-flex items-center"
+            whileHover={{ scale: 1.025, y: -1 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Gurukrupa Enterprise home"
           >
@@ -54,7 +54,7 @@ export function Navigation() {
               src={logo}
               alt="Gurukrupa Enterprise"
               priority
-              className="h-9 w-auto object-contain sm:h-12"
+              className="brand-logo-image relative z-10 h-9 w-auto object-contain sm:h-12"
             />
           </motion.a>
 

@@ -12,19 +12,9 @@ const socialLinks = [
 
 const quickLinks = [
   { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
   { name: 'Achievements', href: '/achievements' },
-  { name: 'Testimonials', href: '/testimonials' },
+  { name: 'Partners', href: '/partners' },
   { name: 'Contact', href: '/contact' },
-]
-
-const services = [
-  'Digital Solutions',
-  'Creative Design',
-  'Business Intelligence',
-  'Cybersecurity',
-  'AI & Automation',
-  'Cloud Services',
 ]
 
 export function Footer() {
@@ -47,7 +37,7 @@ export function Footer() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <motion.a
@@ -91,20 +81,6 @@ export function Footer() {
                   >
                     {link.name}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-foreground">Services</h4>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-muted-foreground text-sm">
-                    {service}
-                  </span>
                 </li>
               ))}
             </ul>
