@@ -2,30 +2,30 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Award, Handshake, Lightbulb, Target } from 'lucide-react'
+import { Handshake, Lightbulb, Route, Target } from 'lucide-react'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 const values = [
   {
     icon: Target,
-    title: 'Vision-Driven',
-    description: 'Long-term solutions that evolve with your business',
+    title: 'Workflow First',
+    description: 'Every build starts with the way your team actually operates',
   },
   {
     icon: Lightbulb,
-    title: 'Innovation First',
-    description: 'Pioneering cutting-edge technologies for real outcomes',
+    title: 'Modern, Practical Tech',
+    description: 'AI, mobile, and cloud decisions mapped to business value',
   },
   {
     icon: Handshake,
-    title: 'Client-Centric',
-    description: 'Lasting partnerships built on trust and results',
+    title: 'Service-Led Delivery',
+    description: 'Implementation, training, and iteration continue after launch',
   },
   {
-    icon: Award,
-    title: 'Excellence',
-    description: 'Premium quality delivered in every project',
+    icon: Route,
+    title: 'Clear Roadmaps',
+    description: 'Defined phases, visible decisions, and accountable delivery',
   },
 ]
 
@@ -46,14 +46,14 @@ export function AboutSnippet() {
         >
           <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">About</span>
           <h2 className="text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-            Pioneering Digital Excellence
+            Software partnership for serious business workflows
           </h2>
           <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground md:text-lg">
             <p>
-              For over a decade, Gurukrupa Enterprise has been at the forefront of technological innovation, delivering transformative solutions that empower businesses to thrive in the digital age.
+              Gurukrupa Enterprise builds software for organizations that need dependable systems, not just attractive screens. We connect product thinking, engineering, and support into one practical delivery model.
             </p>
             <p>
-              We don&apos;t just deliver software — we partner with you through our SWAS model, providing hands-on support, strategic guidance, and continuous optimization to ensure your success.
+              Through SWAS, we stay close to the workflow after launch: helping teams adopt the system, improve operations, and keep the product aligned with changing business needs.
             </p>
           </div>
         </motion.div>

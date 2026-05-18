@@ -7,34 +7,34 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 const milestones = [
   {
-    year: '2015',
-    title: 'Company Founded',
-    description: 'Started with a vision to transform businesses through technology.',
+    year: '01',
+    title: 'Workflow discovery',
+    description: 'We map the current process, users, constraints, risks, and business priorities before proposing a build.',
   },
   {
-    year: '2019',
-    title: 'Tech Pioneer Award',
-    description: 'Recognized for pioneering AI-driven business solutions.',
+    year: '02',
+    title: 'Solution architecture',
+    description: 'The team defines modules, integrations, data flows, deployment needs, and a realistic delivery roadmap.',
   },
   {
-    year: '2021',
-    title: 'Global Expansion',
-    description: 'Successfully expanded operations to 15+ countries.',
+    year: '03',
+    title: 'Product delivery',
+    description: 'Design, engineering, QA, and stakeholder review move together so the product stays close to operational reality.',
   },
   {
-    year: '2022',
-    title: 'Digital Transformation Excellence',
-    description: 'Awarded for exceptional digital transformation initiatives.',
+    year: '04',
+    title: 'Launch enablement',
+    description: 'We support deployment, onboarding, handover, and production readiness for the people who will use the system.',
   },
   {
-    year: '2023',
-    title: 'Industry Leadership',
-    description: 'Named among top 100 most innovative companies worldwide.',
+    year: '05',
+    title: 'Maintenance rhythm',
+    description: 'After go-live, support cycles cover fixes, improvements, monitoring, and feature decisions as business needs change.',
   },
   {
-    year: '2024',
-    title: 'Global Innovation Award',
-    description: 'Recognized for groundbreaking solutions in enterprise technology.',
+    year: '06',
+    title: 'Continuous optimization',
+    description: 'Usage feedback, automation opportunities, and technical improvements feed the next version of the system.',
   },
 ]
 
@@ -57,10 +57,10 @@ export function AchievementsSection({ mode = 'full' }: { mode?: AchievementsMode
           transition={{ duration: 0.8, ease }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Our Journey</span>
-          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Milestones & Achievements</h2>
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Delivery Methodology</span>
+          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">A transparent path from requirement to support</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            A decade of excellence, innovation, and industry recognition.
+            Enterprise confidence comes from clear process, visible decisions, and support that continues beyond launch.
           </p>
         </motion.div>
 

@@ -133,9 +133,9 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
           className="mx-auto mb-10 max-w-3xl text-center"
         >
           <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">What We Do</span>
-          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Our Expertise</h2>
+          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Engineering services with business context</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Web, mobile, AI automation, IoT, and enterprise software services delivered through our hands-on SWAS model.
+            Web, mobile, AI automation, IoT, and enterprise software services delivered through a hands-on model that includes planning, launch, and support.
           </p>
         </motion.div>
 
@@ -187,6 +187,14 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
             )
           })}
         </div>
+
+        {isTeaser ? (
+          <div className="mt-10 text-center">
+            <a href="/services" className="magnetic-button magnetic-button-secondary inline-flex items-center justify-center px-7 py-3 text-sm font-semibold">
+              Explore service capabilities
+            </a>
+          </div>
+        ) : null}
       </div>
     </section>
   )

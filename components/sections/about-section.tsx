@@ -2,42 +2,42 @@
 
 import { useRef, useEffect, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Target, Lightbulb, Users, Award } from 'lucide-react'
+import { Target, Lightbulb, Users, Route } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-  { value: 15, suffix: '+', label: 'Years of Excellence' },
-  { value: 500, suffix: '+', label: 'Projects Delivered' },
-  { value: 200, suffix: '+', label: 'Happy Clients' },
-  { value: 50, suffix: '+', label: 'Industry Awards' },
+  { value: 4, suffix: '', label: 'Delivery Phases' },
+  { value: 3, suffix: '', label: 'Core Product Lines' },
+  { value: 6, suffix: '', label: 'Service Domains' },
+  { value: 1, suffix: '', label: 'Long-Term Partner' },
 ]
 
 const values = [
   {
     icon: Target,
-    title: 'Vision-Driven',
-    description: 'We focus on long-term success, creating solutions that evolve with your business needs.',
+    title: 'Workflow-Driven',
+    description: 'We shape software around real operations, team habits, and business constraints.',
     gradient: 'from-primary to-accent',
   },
   {
     icon: Lightbulb,
-    title: 'Innovation First',
-    description: 'Pioneering cutting-edge technologies to deliver transformative digital experiences.',
+    title: 'Practical Innovation',
+    description: 'We use AI, cloud, and automation where they create measurable operational value.',
     gradient: 'from-accent to-primary',
   },
   {
     icon: Users,
-    title: 'Client-Centric',
-    description: 'Your success is our priority. We build lasting partnerships based on trust and results.',
+    title: 'Partnership Mindset',
+    description: 'SWAS keeps delivery, training, support, and iteration connected after go-live.',
     gradient: 'from-primary to-accent',
   },
   {
-    icon: Award,
-    title: 'Excellence',
-    description: 'Committed to delivering premium quality in every project we undertake.',
+    icon: Route,
+    title: 'Clear Execution',
+    description: 'Roadmaps, priorities, and next steps stay visible from discovery through maintenance.',
     gradient: 'from-accent to-primary',
   },
 ]
@@ -132,13 +132,13 @@ export function AboutSection() {
             About Us
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Pioneering{' '}
-            <span className="gradient-text">Digital Excellence</span>
+            Premium Software +{' '}
+            <span className="gradient-text">Service Enterprise</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            For over a decade, Gurukrupa Enterprise has been at the forefront of technological 
-            innovation, delivering transformative solutions that empower businesses to thrive 
-            in the digital age.
+            Gurukrupa Enterprise builds practical software systems for businesses that need
+            dependable delivery, scalable architecture, and a support partner who understands
+            the workflow behind the product.
           </p>
         </motion.div>
 

@@ -13,6 +13,7 @@ import headerDarkLogo from '@/Logos/Dark logo 3.png'
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
   {
     name: 'Products',
     href: '/products',
@@ -24,26 +25,16 @@ const navItems = [
     ],
   },
   {
-    name: 'Services',
-    href: '/services',
+    name: 'SWAS Model',
+    href: '/swas',
     dropdown: [
-      { name: 'Web Development', href: '/services' },
-      { name: 'Mobile App Development', href: '/services' },
-      { name: 'AI Agent Development', href: '/services' },
-      { name: 'All Services', href: '/services' },
+      { name: 'Delivery Model', href: '/swas' },
+      { name: 'Services', href: '/services' },
+      { name: 'Contact Planning', href: '/contact' },
     ],
   },
-  {
-    name: 'Solutions',
-    href: '/solutions',
-    dropdown: [
-      { name: 'Mobile App Development', href: '/solutions' },
-      { name: 'Web App Development', href: '/solutions' },
-      { name: 'SWAS Delivery Model', href: '/solutions' },
-    ],
-  },
-  { name: 'Achievements', href: '/achievements' },
-  { name: 'Partners', href: '/partners' },
+  { name: 'Industries', href: '/industries' },
+  { name: 'Case Studies', href: '/case-studies' },
   { name: 'Contact', href: '/contact' },
 ]
 

@@ -7,12 +7,11 @@ import { ParticleField } from '@/components/particle-field'
 
 const ease = [0.22, 1, 0.36, 1] as const
 const heroStats = [
-  { value: 10, suffix: '+', label: 'Years' },
-  { value: 100, suffix: '+', label: 'Projects' },
-  { value: 15, suffix: '+', label: 'Countries' },
-  { value: 98, suffix: '%', label: 'Retention' },
+  { value: 4, suffix: '', label: 'Delivery phases' },
+  { value: 24, suffix: '/7', label: 'Support mindset' },
+  { value: 3, suffix: '', label: 'Core product lines' },
+  { value: 1, suffix: '', label: 'Long-term partner' },
 ]
-const partners = ['TC', 'II', 'FL', 'DE', 'CN', 'SS']
 
 function RevealWords({ text }: { text: string }) {
   return (
@@ -90,7 +89,7 @@ export function HeroSection() {
           </motion.div>
 
           <h1 className="max-w-5xl text-5xl font-semibold leading-[0.96] tracking-tight text-foreground md:text-7xl xl:text-8xl">
-            <RevealWords text="Enterprise systems built around real workflows." />
+            <RevealWords text="Premium software built with hands-on service." />
           </h1>
 
           <motion.p
@@ -99,8 +98,8 @@ export function HeroSection() {
             transition={{ delay: 0.62, duration: 0.75, ease }}
             className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl"
           >
-            Gurukrupa Enterprise builds digital products, AI workflows, mobile apps,
-            and operational software with hands-on support after launch.
+            Gurukrupa Enterprise designs and builds web platforms, mobile apps,
+            AI automation, and operational systems through SWAS: Software WITH a Service.
           </motion.p>
 
           <motion.div
@@ -127,21 +126,21 @@ export function HeroSection() {
             className="mt-10 flex flex-col gap-3 sm:flex-row"
           >
             <motion.a
-              href="#products"
+              href="#lead-inquiry"
               className="inline-flex items-center justify-center rounded-lg btn-premium px-8 py-4 text-base font-semibold text-primary-foreground"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              View Products
+              Start a Project
               <ArrowRight className="ml-2 h-5 w-5" />
             </motion.a>
             <motion.a
-              href="#lead-inquiry"
+              href="/swas"
               className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 px-8 py-4 text-base font-semibold text-foreground backdrop-blur transition hover:border-accent/35 hover:bg-accent/10"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              Start a Project
+              Explore SWAS
             </motion.a>
           </motion.div>
 
@@ -151,18 +150,9 @@ export function HeroSection() {
             transition={{ delay: 0.92, duration: 0.7, ease }}
             className="mt-8"
           >
-            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Trusted by 12+ partners
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {partners.map((partner) => (
-                <span
-                  key={partner}
-                  className="flex h-10 w-14 items-center justify-center rounded-full border border-border bg-card/70 text-xs font-semibold text-muted-foreground backdrop-blur"
-                >
-                  {partner}
-                </span>
-              ))}
+            <div className="max-w-xl rounded-2xl border border-border bg-card/55 p-4 text-sm leading-6 text-muted-foreground backdrop-blur">
+              Built for founders, business owners, agencies, and internal teams who need
+              practical software delivery, not a one-time code handover.
             </div>
           </motion.div>
         </div>

@@ -6,24 +6,24 @@ import { motion, useInView } from 'framer-motion'
 const ease = [0.22, 1, 0.36, 1] as const
 
 const partners = [
-  'TechCorp',
-  'Innovate Inc',
-  'Future Labs',
-  'Digital Edge',
-  'Cloud Nine',
-  'Smart Systems',
-  'Next Wave',
-  'Prime Tech',
-  'Elite Solutions',
-  'Global Dynamics',
-  'Apex Industries',
-  'Quantum Labs',
+  'Retail operations',
+  'Service businesses',
+  'Finance workflows',
+  'Field teams',
+  'Internal portals',
+  'AI automation',
+  'GST billing',
+  'Mobile ordering',
+  'Lead follow-up',
+  'IoT workflows',
+  'Agency delivery',
+  'Custom systems',
 ]
 
 const stats = [
-  { value: '98%', label: 'Client Retention Rate' },
-  { value: '15+', label: 'Countries Served' },
-  { value: '24/7', label: 'Support Available' },
+  { value: '4', label: 'Delivery Phases' },
+  { value: '6', label: 'Industry Workflows' },
+  { value: 'SWAS', label: 'Support Model' },
 ]
 
 function TickerRow({ reverse = false }: { reverse?: boolean }) {
@@ -63,10 +63,10 @@ export function PartnersSection({ mode = 'full' }: { mode?: PartnersMode }) {
           transition={{ duration: 0.8, ease }}
           className="mx-auto mb-12 max-w-3xl text-center"
         >
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Trusted By</span>
-          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Our Valued Partners</h2>
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Workflows We Support</span>
+          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Built for practical business ecosystems</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            We collaborate with organizations that trust Gurukrupa Enterprise to deliver dependable software, automation, and SWAS support.
+            Gurukrupa Enterprise supports teams across operations, billing, communication, ordering, automation, and custom internal systems.
           </p>
         </motion.div>
 

@@ -131,9 +131,9 @@ export function ProductsSolutionsSection({ mode = 'full' }: { mode?: ProductsMod
           className="mx-auto mb-14 max-w-3xl text-center"
         >
           <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Products</span>
-          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Digital products for modern businesses</h2>
+          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Productized systems for modern operations</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            A focused product portfolio for AI chat, GST billing, lead follow-up, digital operations, ordering, engagement, and custom enterprise systems.
+            A focused portfolio across AI communication, GST billing, follow-up automation, operations, ordering, and custom enterprise workflows.
           </p>
         </motion.div>
 
@@ -148,6 +148,15 @@ export function ProductsSolutionsSection({ mode = 'full' }: { mode?: ProductsMod
             {standardProducts.map((product, index) => (
               <ProductCard key={product.name} product={product} index={index + 3} featured={false} />
             ))}
+          </div>
+        ) : null}
+
+        {isTeaser ? (
+          <div className="mt-10 text-center">
+            <a href="/products" className="magnetic-button magnetic-button-secondary inline-flex items-center justify-center px-7 py-3 text-sm font-semibold">
+              View all products
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
           </div>
         ) : null}
       </div>

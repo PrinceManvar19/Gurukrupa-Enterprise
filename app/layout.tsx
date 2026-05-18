@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   title: 'Gurukrupa Enterprise | Software WITH a Service',
   description:
     'Gurukrupa Enterprise builds business software, operational workflows, AI automation, and enterprise systems with hands-on service.',
-  generator: 'v0.app',
   keywords: ['software with a service', 'enterprise software', 'AI automation', 'business workflows', 'Gurukrupa Enterprise'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
   manifest: '/site.webmanifest',

@@ -8,13 +8,13 @@ import footerDarkLogo from '@/Logos/Dark logo 1.png'
 import footerLightLogo from '@/Logos/Light logo 1.png'
 
 const quickLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Products', href: '#products' },
-  { name: 'Services', href: '#services' },
-  { name: 'Solutions', href: '/solutions' },
-  { name: 'Achievements', href: '#achievements' },
-  { name: 'Partners', href: '#partners' },
-  { name: 'Contact', href: '#lead-inquiry' },
+  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Products', href: '/products' },
+  { name: 'SWAS Model', href: '/swas' },
+  { name: 'Industries', href: '/industries' },
+  { name: 'Case Studies', href: '/case-studies' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 const products = ['Go Digital Chat', 'Mod GST', 'Follow-up.io', 'Scratch DIGI', 'Mob Order', 'CriZone']

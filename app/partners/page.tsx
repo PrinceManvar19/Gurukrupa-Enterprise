@@ -1,5 +1,5 @@
-import { PartnersSection } from '@/components/sections/partners-section'
+import { redirect } from 'next/navigation'
 
 export default function PartnersPage() {
-  return <PartnersSection mode="full" />
+  redirect('/industries')
 }

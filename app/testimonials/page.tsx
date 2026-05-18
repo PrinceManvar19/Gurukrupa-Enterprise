@@ -1,5 +1,5 @@
-import { TestimonialsSection } from '@/components/sections/testimonials-section'
+import { redirect } from 'next/navigation'
 
 export default function TestimonialsPage() {
-  return <TestimonialsSection mode="full" />
+  redirect('/case-studies')
 }
