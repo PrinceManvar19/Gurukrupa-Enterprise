@@ -42,8 +42,20 @@ const values = [
   },
 ]
 
+const storyParagraphs = [
+  'Gurukrupa Enterprise was shaped around a simple belief: business software should make daily operations clearer, faster, and easier to manage. Instead of treating development as a one-time handover, we look at the people, process, approvals, reporting, and support needs behind every system.',
+  'Our SWAS philosophy, Software WITH a Service, keeps us close to clients after launch. We help teams adopt the product, respond to operational feedback, and improve the system as the business changes.',
+  'That business-first approach is why our work focuses on long-term partnerships. We build for practical value: stable systems, direct communication, scalable architecture, and software that keeps earning its place in the organization.',
+]
+
+const team = [
+  { name: 'Gurukrupa Team', role: 'Software Delivery', initials: 'GE', bio: 'Leads planning, product delivery, and long-term SWAS support for business software projects.' },
+  { name: 'Product Strategy Team', role: 'Workflow & UX', initials: 'PS', bio: 'Maps business requirements into practical user flows, dashboards, and adoption-ready product experiences.' },
+  { name: 'Engineering Team', role: 'Full-stack Development', initials: 'ET', bio: 'Builds web, mobile, automation, and enterprise systems with scalable, maintainable engineering practices.' },
+]
+
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(value)
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true })
 
@@ -192,6 +204,48 @@ export function AboutSection() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-24 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div>
+            <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">Our Story</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Built for long-term business partnerships.</h2>
+          </div>
+          <div className="glass-card rounded-2xl p-7 md:p-9">
+            <div className="space-y-5">
+              {storyParagraphs.map((paragraph) => (
+                <p key={paragraph} className="text-base leading-8 text-muted-foreground md:text-lg">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-24">
+          <div className="mb-10 max-w-3xl">
+            <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">The Team</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">A focused team for planning, building, and supporting business software.</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {team.map((member) => (
+              <div key={member.name} className="glass-card rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40">
+                <div className="mb-6 grid h-14 w-14 place-items-center rounded-full bg-accent/10 text-lg font-semibold text-accent">
+                  {member.initials}
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">{member.name}</h3>
+                <div className="mt-1 text-sm font-semibold uppercase tracking-widest text-accent">{member.role}</div>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{member.bio}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-24 rounded-2xl border border-accent/20 bg-card/80 p-8 text-center shadow-2xl backdrop-blur md:p-10">
+          <h2 className="text-3xl font-bold text-foreground md:text-5xl">Ready to start a project?</h2>
+          <a href="/contact" className="btn-premium mt-7 inline-flex rounded-lg px-8 py-4 text-base font-semibold text-primary-foreground">
+            Get in Touch
+          </a>
         </div>
       </div>
     </section>

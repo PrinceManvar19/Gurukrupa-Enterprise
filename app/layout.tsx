@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/layout/Header'
 import { Footer } from '@/components/sections/footer'
+import { FloatingContact } from '@/components/floating-contact'
 
 import './globals.css'
 
@@ -16,7 +17,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: 'Gurukrupa Enterprise | Software WITH a Service',
   description:
-    'Gurukrupa Enterprise builds business software, operational workflows, AI automation, and enterprise systems with hands-on service.',
+    'Gurukrupa Enterprise delivers custom software, mobile apps, and AI automation through SWAS — Software WITH a Service. Based in India, serving businesses globally.',
   keywords: ['software with a service', 'enterprise software', 'AI automation', 'business workflows', 'Gurukrupa Enterprise'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
   manifest: '/site.webmanifest',
@@ -86,6 +87,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <FloatingContact />
         </ThemeProvider>
 
 

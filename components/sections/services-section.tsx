@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Bot, Braces, Code2, Cpu, DatabaseZap, Globe2, Laptop, Layers, Network, Smartphone } from 'lucide-react'
+import { Bot, Braces, Code2, Cpu, DatabaseZap, Globe2, Laptop, Layers, Network, Smartphone, Workflow } from 'lucide-react'
 
 const ease = [0.22, 1, 0.36, 1] as const
 const categories = ['Web Platforms', 'Mobile Products', 'AI & Automation', 'Enterprise Software'] as const
@@ -46,14 +46,14 @@ const services = [
   {
     category: 'Mobile Products',
     icon: Smartphone,
-    title: 'Android App Development',
+    title: 'Android Native',
     description: 'Robust Android applications with secure flows and scalable architecture.',
     features: ['Native UX', 'Secure Auth', 'Devices'],
   },
   {
     category: 'Mobile Products',
     icon: Smartphone,
-    title: 'iOS App Development',
+    title: 'iOS Native',
     description: 'Polished iOS experiences built for stability, speed, and continuous improvement.',
     features: ['App Store', 'Performance', 'Integrations'],
   },
@@ -66,38 +66,52 @@ const services = [
   },
   {
     category: 'AI & Automation',
-    icon: Braces,
-    title: 'Python Development',
-    description: 'Automation scripts, services, and intelligent processing for business operations.',
-    features: ['Automation', 'APIs', 'Data'],
+    icon: Workflow,
+    title: 'Workflow Automation',
+    description: 'Automated operational flows that reduce manual effort and improve visibility.',
+    features: ['Approvals', 'Reminders', 'Dashboards'],
   },
   {
     category: 'AI & Automation',
     icon: DatabaseZap,
-    title: 'Vibe Coding Development',
-    description: 'Rapid prototyping and iterative delivery with modern engineering collaboration.',
-    features: ['Prototypes', 'Iteration', 'Delivery'],
+    title: 'Chatbot Integration',
+    description: 'Business chatbots connected to lead capture, support, and internal workflows.',
+    features: ['AI Chat', 'Leads', 'Support'],
   },
   {
     category: 'AI & Automation',
-    icon: Cpu,
-    title: 'IoT Development',
-    description: 'Connected device platforms that turn sensor data into operational workflows.',
-    features: ['Devices', 'Pipelines', 'Monitoring'],
+    icon: Braces,
+    title: 'Python Automation',
+    description: 'Automation scripts, APIs, and data processing for business operations.',
+    features: ['Scripts', 'APIs', 'Data'],
+  },
+  {
+    category: 'Enterprise Software',
+    icon: Layers,
+    title: 'ERP Systems',
+    description: 'Custom ERP modules for approvals, billing, inventory, reporting, and team workflows.',
+    features: ['Modules', 'Roles', 'Reports'],
+  },
+  {
+    category: 'Enterprise Software',
+    icon: Globe2,
+    title: 'Custom Enterprise Builds',
+    description: 'Bespoke systems designed around operations, compliance, integrations, and growth.',
+    features: ['Custom', 'Scalable', 'SWAS'],
   },
   {
     category: 'Enterprise Software',
     icon: Code2,
-    title: 'VB.NET Development',
+    title: 'VB.NET / Legacy Modernisation',
     description: 'Maintain, modernize, and extend enterprise systems with clean reliability.',
     features: ['Legacy', 'Desktop', 'Modernization'],
   },
   {
     category: 'Enterprise Software',
-    icon: Globe2,
-    title: 'Custom Enterprise Integrations',
-    description: 'Connect products, workflows, data, and compliance systems into one dependable operation.',
-    features: ['ERP/CRM', 'Compliance', 'SWAS'],
+    icon: Cpu,
+    title: 'IoT Integration',
+    description: 'Connected device and sensor workflows that feed operational dashboards.',
+    features: ['Devices', 'Monitoring', 'Alerts'],
   },
 ] satisfies Array<{
   category: (typeof categories)[number]
@@ -194,7 +208,13 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
               Explore service capabilities
             </a>
           </div>
-        ) : null}
+        ) : (
+          <div className="mt-12 text-center">
+            <a href="/contact" className="btn-premium inline-flex items-center justify-center rounded-lg px-8 py-4 text-base font-semibold text-primary-foreground">
+              Discuss your requirement →
+            </a>
+          </div>
+        )}
       </div>
     </section>
   )

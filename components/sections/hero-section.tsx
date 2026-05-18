@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowRight, CheckCircle2, Workflow } from 'lucide-react'
 import { ParticleField } from '@/components/particle-field'
@@ -15,54 +15,99 @@ const heroStats = [
 
 function RevealWords({ text }: { text: string }) {
   return (
-    <>
-      {text.split(' ').map((word, index) => (
+    <span aria-label={text}>
+      {text.split(/(\s+)/).map((part, index) => (
+        /^\s+$/.test(part) ? (
+          <span key={`space-${index}`} aria-hidden="true"> </span>
+        ) : (
         <motion.span
-          key={`${word}-${index}`}
-          className="inline-block overflow-hidden"
+          key={`${part}-${index}`}
+          className="inline-block overflow-hidden align-baseline"
+          aria-hidden="true"
         >
           <motion.span
-            className="mr-[0.18em] inline-block"
+            className="inline-block"
             initial={{ y: '112%', opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.78, delay: 0.2 + index * 0.055, ease }}
           >
-            {word}
+            {part}
           </motion.span>
         </motion.span>
+        )
       ))}
-    </>
+    </span>
+  )
+}
+
+function StatCounter({ value, suffix }: { value: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [display, setDisplay] = useState(value)
+
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+
+    const run = () => {
+      let frame = 0
+      let start: number | null = null
+
+      const tick = (timestamp: number) => {
+        start ??= timestamp
+        const progress = Math.min((timestamp - start) / 1200, 1)
+        const eased = 1 - Math.pow(1 - progress, 3)
+        setDisplay(Math.max(value === 1 ? 1 : 1, Math.round(value * eased)))
+
+        if (progress < 1) {
+          frame = window.requestAnimationFrame(tick)
+        }
+      }
+
+      frame = window.requestAnimationFrame(tick)
+      return () => window.cancelAnimationFrame(frame)
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      setDisplay(value)
+      return
+    }
+
+    let cleanup: (() => void) | undefined
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return
+        cleanup = run()
+        observer.disconnect()
+      },
+      { threshold: 0.35, rootMargin: '0px 0px -10% 0px' }
+    )
+
+    observer.observe(node)
+
+    return () => {
+      observer.disconnect()
+      cleanup?.()
+    }
+  }, [value])
+
+  return (
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
   )
 }
 
 export function HeroSection() {
   const [animationPhase, setAnimationPhase] = useState<'saas' | 'transition' | 'swas'>('saas')
-  const [counts, setCounts] = useState(() => heroStats.map(() => 0))
 
   useEffect(() => {
     const transitionTimer = window.setTimeout(() => setAnimationPhase('transition'), 1800)
     const swasTimer = window.setTimeout(() => setAnimationPhase('swas'), 2400)
-    let frame = 0
-    let start: number | null = null
-
-    const tick = (timestamp: number) => {
-      start ??= timestamp
-      const progress = Math.min((timestamp - start) / 1400, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-
-      setCounts(heroStats.map((stat) => Math.round(stat.value * eased)))
-
-      if (progress < 1) {
-        frame = window.requestAnimationFrame(tick)
-      }
-    }
-
-    frame = window.requestAnimationFrame(tick)
 
     return () => {
       window.clearTimeout(transitionTimer)
       window.clearTimeout(swasTimer)
-      window.cancelAnimationFrame(frame)
     }
   }, [])
 
@@ -108,11 +153,10 @@ export function HeroSection() {
             transition={{ delay: 0.7, duration: 0.7, ease }}
             className="mt-8 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4"
           >
-            {heroStats.map((stat, index) => (
+            {heroStats.map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-accent/15 bg-card/60 px-4 py-3 backdrop-blur">
                 <div className="text-2xl font-semibold text-foreground">
-                  {counts[index]}
-                  {stat.suffix}
+                  <StatCounter value={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground">{stat.label}</div>
               </div>

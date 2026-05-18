@@ -8,9 +8,11 @@ const ease = [0.22, 1, 0.36, 1] as const
 const caseStudies = [
   {
     type: 'ERP Management System',
+    industry: 'Service operations',
     title: 'Centralized ERP for a multi-department service business',
     challenge: 'Teams were managing customers, approvals, invoices, and task status across spreadsheets and disconnected messaging channels.',
     solution: 'Built a role-based ERP workspace with customer records, approval flows, billing checkpoints, task ownership, and management dashboards.',
+    result: 'Managers gained one shared operating view for approvals, billing, and reporting.',
     tech: ['React', 'Node.js', 'PostgreSQL', 'Role-based access'],
     metrics: [
       ['42%', 'faster approval cycle'],
@@ -23,9 +25,11 @@ const caseStudies = [
   },
   {
     type: 'Retail POS Platform',
+    industry: 'Retail',
     title: 'Modern POS and customer follow-up platform for retail operations',
     challenge: 'Store staff needed faster billing, product lookup, customer history, and follow-up reminders without switching between tools.',
     solution: 'Delivered a POS experience with quick billing, inventory visibility, customer profiles, purchase history, and automated follow-up cues.',
+    result: 'Store teams completed checkout and follow-up workflows with fewer manual steps.',
     tech: ['Next.js', 'Firebase', 'Cloud Functions', 'Mobile-first UI'],
     metrics: [
       ['31%', 'quicker checkout flow'],
@@ -38,9 +42,11 @@ const caseStudies = [
   },
   {
     type: 'Inventory & Warehouse Automation',
+    industry: 'Distribution and warehouse',
     title: 'Inventory visibility layer for stock movement and warehouse teams',
     challenge: 'Warehouse updates were delayed, stock variance was difficult to trace, and teams lacked one shared operational view.',
     solution: 'Created inventory dashboards, scan-based stock movement, exception alerts, low-stock views, and daily warehouse summaries.',
+    result: 'Warehouse teams improved stock lookup speed and reduced repeated manual checks.',
     tech: ['React Native', 'Node.js', 'MongoDB', 'Barcode workflows'],
     metrics: [
       ['37%', 'fewer manual stock checks'],
@@ -81,7 +87,7 @@ function DashboardPreview({ study, index }: { study: (typeof caseStudies)[number
             </div>
             <div>
               <strong>{study.type}</strong>
-              <span>Operational command view</span>
+              <span>{study.industry}</span>
             </div>
           </div>
           <div className="case-preview-chart">
@@ -164,6 +170,10 @@ export function CaseStudiesSection({ compact = false }: { compact?: boolean }) {
                       <div className="case-story-block">
                         <span>Solution</span>
                         <p>{study.solution}</p>
+                      </div>
+                      <div className="case-story-block">
+                        <span>Result</span>
+                        <p>{study.result}</p>
                       </div>
                     </div>
 

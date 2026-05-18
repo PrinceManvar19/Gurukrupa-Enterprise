@@ -7,6 +7,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 const techs = [
   { name: 'React', category: 'Frontend' },
+  { name: 'Next.js', category: 'Full-stack' },
   { name: 'React Native', category: 'Mobile' },
   { name: 'Flutter', category: 'Mobile' },
   { name: 'Node.js', category: 'Backend' },
@@ -20,8 +21,8 @@ const techs = [
   { name: 'PostgreSQL', category: 'Database' },
   { name: 'MongoDB', category: 'Database' },
   { name: 'Firebase', category: 'Cloud Backend' },
-  { name: 'AWS', category: 'Cloud' },
-  { name: 'Docker', category: 'DevOps' },
+  { name: 'Cloud Infrastructure', category: 'DevOps' },
+  { name: 'Docker', category: 'Deployment' },
 ]
 
 export function TechStackSection() {

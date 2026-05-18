@@ -2950,3 +2950,9 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.75rem;
+  }
+}

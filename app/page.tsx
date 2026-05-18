@@ -11,6 +11,7 @@ import { WhyChooseUsSection } from '@/components/sections/why-choose-us-section'
 import { LeadInquiryForm } from '@/components/sections/lead-inquiry-form'
 import { AchievementsSection } from '@/components/sections/achievements-section'
 import { CaseStudiesSection } from '@/components/sections/case-studies-section'
+import { FAQSection, IndustriesServeSection, ProcessTimelineSection, SocialProofSection, WhySwasSection } from '@/components/sections/enterprise-trust-sections'
 
 export default function Home() {
   return (
@@ -18,13 +19,18 @@ export default function Home() {
       <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
         <HeroSection />
         <AboutSnippet />
+        <WhySwasSection />
         <ProductsSolutionsSection mode="teaser" />
         <ServicesSection mode="teaser" />
         <TechStackSection />
         <WhyChooseUsSection />
+        <ProcessTimelineSection />
+        <IndustriesServeSection />
         <CaseStudiesSection compact />
+        <SocialProofSection />
         <AchievementsSection mode="teaser" />
         <CTASection />
+        <FAQSection />
         <LeadInquiryForm />
       </main>
     </SmoothScroll>

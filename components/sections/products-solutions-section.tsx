@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { MouseEvent, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight, ExternalLink, Gauge, Globe, Layers, Shield, Sparkles, Workflow, Wrench } from 'lucide-react'
 
@@ -66,8 +66,24 @@ type ProductsMode = 'teaser' | 'full'
 
 function ProductCard({ product, index, featured }: { product: Product; index: number; featured: boolean }) {
   const Icon = product.icon
-  const content = (
-    <>
+
+  const requestDemoHref = `/contact?interest=${encodeURIComponent(product.name)}#lead-inquiry`
+  const openProduct = product.url ?? '/contact'
+
+  const handleDemoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation()
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ delay: index * 0.06, duration: 0.55, ease }}
+      className={`group glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40 hover:shadow-lg ${
+        featured ? 'min-h-[360px] md:p-8' : 'min-h-[300px]'
+      }`}
+    >
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent shadow-[0_18px_34px_rgba(79,140,255,0.16)]">
           <Icon className="h-7 w-7 text-white" />
@@ -85,28 +101,25 @@ function ProductCard({ product, index, featured }: { product: Product; index: nu
           </span>
         ))}
       </div>
-      <div className="mt-7 inline-flex items-center text-sm font-semibold text-accent">
-        {featured ? 'Visit Product' : 'Discuss Product'}
-        {featured ? <ExternalLink className="ml-2 h-4 w-4" /> : <ArrowRight className="ml-2 h-4 w-4" />}
+      <div className="mt-7 flex flex-wrap gap-3">
+        <a
+          href={openProduct}
+          target={product.url ? '_blank' : undefined}
+          rel={product.url ? 'noopener noreferrer' : undefined}
+          className="inline-flex items-center text-sm font-semibold text-accent"
+        >
+          {featured ? 'Visit Product' : 'Discuss Product'}
+          {featured ? <ExternalLink className="ml-2 h-4 w-4" /> : <ArrowRight className="ml-2 h-4 w-4" />}
+        </a>
+        <a
+          href={requestDemoHref}
+          onClick={handleDemoClick}
+          className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-4 py-2 text-sm font-semibold text-accent transition hover:border-accent/45 hover:bg-accent/15"
+        >
+          Request a Demo
+        </a>
       </div>
-    </>
-  )
-
-  return (
-    <motion.a
-      href={product.url ?? '/contact'}
-      target={product.url ? '_blank' : undefined}
-      rel={product.url ? 'noopener noreferrer' : undefined}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ delay: index * 0.06, duration: 0.55, ease }}
-      className={`group glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40 hover:shadow-lg ${
-        featured ? 'min-h-[360px] md:p-8' : 'min-h-[300px]'
-      }`}
-    >
-      {content}
-    </motion.a>
+    </motion.div>
   )
 }
 

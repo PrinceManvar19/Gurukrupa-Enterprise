@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 
 import footerDarkLogo from '@/Logos/Dark logo 1.png'
 import footerLightLogo from '@/Logos/Light logo 1.png'
@@ -18,13 +18,6 @@ const quickLinks = [
 ]
 
 const products = ['Go Digital Chat', 'Mod GST', 'Follow-up.io', 'Scratch DIGI', 'Mob Order', 'CriZone']
-
-const socials = [
-  { name: 'LinkedIn', href: '#', icon: Linkedin },
-  { name: 'Twitter', href: '#', icon: Twitter },
-  { name: 'Instagram', href: '#', icon: Instagram },
-  { name: 'GitHub', href: '#', icon: Github },
-]
 
 export function Footer() {
   return (
@@ -54,22 +47,6 @@ export function Footer() {
             <p className="text-sm leading-7 text-muted-foreground">
               Software WITH a Service for business systems, operational workflows, AI automation, mobile products, and enterprise delivery.
             </p>
-            <div className="mt-6 flex gap-3">
-              {socials.map((social) => {
-                const Icon = social.icon
-
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    aria-label={social.name}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:border-accent/40 hover:text-accent"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                )
-              })}
-            </div>
           </div>
 
           <div>
