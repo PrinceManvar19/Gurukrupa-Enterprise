@@ -2553,3 +2553,400 @@ section[id="why-choose-us"] .glass-card {
     transform: translate3d(18px, -12px, 0);
   }
 }
+
+/* Premium enterprise color elevation */
+:root {
+  --ge-accent: #2563eb;
+  --ge-accent-strong: #1d4ed8;
+  --ge-accent-soft: rgba(37, 99, 235, 0.1);
+  --ge-accent-border: rgba(37, 99, 235, 0.24);
+  --ge-cyan: #06b6d4;
+  --ge-violet: #7c3aed;
+  --ge-glow-blue: rgba(37, 99, 235, 0.18);
+  --ge-glow-cyan: rgba(6, 182, 212, 0.14);
+  --ge-glow-violet: rgba(124, 58, 237, 0.12);
+  --brand-gradient: linear-gradient(135deg, #1d4ed8 0%, #2563eb 48%, #06b6d4 100%);
+  --brand-gradient-hover: linear-gradient(135deg, #2563eb 0%, #3b82f6 46%, #22d3ee 100%);
+}
+
+[data-theme="dark"],
+.dark {
+  --ge-accent: #60a5fa;
+  --ge-accent-strong: #93c5fd;
+  --ge-accent-soft: rgba(96, 165, 250, 0.12);
+  --ge-accent-border: rgba(96, 165, 250, 0.32);
+  --ge-cyan: #22d3ee;
+  --ge-violet: #a78bfa;
+  --ge-bg: #060b16;
+  --ge-bg-soft: #0c1424;
+  --ge-bg-subtle: #09111f;
+  --ge-surface: #0f172a;
+  --ge-surface-2: #111c31;
+  --ge-surface-3: #162238;
+  --ge-elevated: rgba(12, 20, 36, 0.84);
+  --ge-text: #e5edf8;
+  --ge-text-strong: #ffffff;
+  --ge-muted: #9aa8bc;
+  --ge-soft: #718096;
+  --ge-border: rgba(148, 163, 184, 0.13);
+  --ge-border-strong: rgba(148, 163, 184, 0.2);
+  --ge-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.36);
+  --ge-shadow-md: 0 18px 54px rgba(0, 0, 0, 0.34);
+  --ge-shadow-lg: 0 34px 100px rgba(0, 0, 0, 0.48);
+  --brand-gradient: linear-gradient(135deg, #2563eb 0%, #60a5fa 46%, #22d3ee 100%);
+  --brand-gradient-hover: linear-gradient(135deg, #3b82f6 0%, #7dd3fc 50%, #a78bfa 100%);
+}
+
+body {
+  background:
+    radial-gradient(ellipse 72% 46% at 78% -12%, color-mix(in srgb, var(--ge-accent) 17%, transparent), transparent 60%),
+    radial-gradient(ellipse 54% 34% at 10% 12%, color-mix(in srgb, var(--ge-violet) 8%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--ge-bg) 0%, var(--ge-bg-subtle) 46%, var(--ge-bg) 100%);
+}
+
+[data-theme="dark"] body {
+  background:
+    radial-gradient(ellipse 74% 46% at 78% -14%, rgba(37, 99, 235, 0.24), transparent 62%),
+    radial-gradient(ellipse 58% 36% at 6% 18%, rgba(124, 58, 237, 0.12), transparent 60%),
+    radial-gradient(ellipse 52% 32% at 96% 58%, rgba(34, 211, 238, 0.08), transparent 64%),
+    linear-gradient(180deg, #060b16 0%, #0a1220 48%, #060b16 100%);
+}
+
+.gradient-mesh-bg,
+.hero-ambient,
+.case-section-bg {
+  background:
+    radial-gradient(ellipse 64% 42% at 74% 8%, color-mix(in srgb, var(--ge-accent) 16%, transparent), transparent 60%),
+    radial-gradient(ellipse 46% 30% at 18% 28%, color-mix(in srgb, var(--ge-violet) 8%, transparent), transparent 58%),
+    radial-gradient(ellipse 44% 28% at 86% 76%, color-mix(in srgb, var(--ge-cyan) 10%, transparent), transparent 62%),
+    linear-gradient(180deg, var(--ge-bg) 0%, var(--ge-bg-soft) 54%, var(--ge-bg) 100%);
+}
+
+.glass-card,
+.product-showcase,
+.service-console,
+.premium-form,
+.case-study-card {
+  border-color: color-mix(in srgb, var(--ge-border) 82%, var(--ge-accent) 18%);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, white 5%, transparent), transparent 42%),
+    color-mix(in srgb, var(--ge-surface) 88%, transparent);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, white 8%, transparent) inset,
+    var(--ge-shadow-sm);
+}
+
+.glass-card:hover,
+.case-study-card:hover {
+  border-color: var(--ge-accent-border);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, white 10%, transparent) inset,
+    0 22px 70px color-mix(in srgb, var(--ge-accent) 14%, transparent),
+    var(--ge-shadow-md);
+}
+
+.btn-premium,
+.magnetic-button-primary,
+.nav-cta,
+.mobile-nav-cta {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 38%),
+    var(--brand-gradient);
+  border-color: color-mix(in srgb, var(--ge-accent) 72%, white 16%);
+  box-shadow:
+    0 14px 36px color-mix(in srgb, var(--ge-accent) 24%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.btn-premium:hover,
+.magnetic-button-primary:hover,
+.nav-cta:hover,
+.mobile-nav-cta:hover {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 40%),
+    var(--brand-gradient-hover);
+  box-shadow:
+    0 18px 48px color-mix(in srgb, var(--ge-accent) 30%, transparent),
+    0 0 34px color-mix(in srgb, var(--ge-cyan) 12%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.case-study-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ge-border);
+  border-radius: 1.35rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  transition:
+    transform 320ms var(--ge-ease),
+    border-color 320ms var(--ge-ease),
+    box-shadow 320ms var(--ge-ease),
+    background 320ms var(--ge-ease);
+}
+
+.case-study-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 82% 18%, color-mix(in srgb, var(--ge-accent) 10%, transparent), transparent 40%),
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--ge-cyan) 4%, transparent), transparent);
+  opacity: 0;
+  transition: opacity 320ms var(--ge-ease);
+}
+
+.case-study-card:hover {
+  transform: translateY(-4px);
+}
+
+.case-study-card:hover::before {
+  opacity: 1;
+}
+
+.case-study-icon,
+.case-preview-mark {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ge-accent-border);
+  background: color-mix(in srgb, var(--ge-accent) 11%, var(--ge-surface));
+  color: var(--ge-accent);
+}
+
+.case-study-icon {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1rem;
+}
+
+.case-story-block {
+  border: 1px solid var(--ge-border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--ge-surface-2) 70%, transparent);
+  padding: 1rem;
+}
+
+.case-story-block span {
+  display: block;
+  color: var(--ge-accent);
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.case-story-block p {
+  margin-top: 0.45rem;
+  color: var(--ge-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.case-tech-pill {
+  border: 1px solid var(--ge-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ge-surface) 72%, transparent);
+  color: var(--ge-muted);
+  padding: 0.42rem 0.72rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.case-preview {
+  overflow: hidden;
+  border: 1px solid var(--ge-border-strong);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, white 7%, transparent), transparent 45%),
+    color-mix(in srgb, var(--ge-surface) 92%, transparent);
+  box-shadow: var(--ge-shadow-lg);
+}
+
+.case-preview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--ge-border);
+  background: color-mix(in srgb, var(--ge-surface-2) 78%, transparent);
+  padding: 0.85rem 1rem;
+}
+
+.case-preview-top span {
+  display: block;
+  height: 0.58rem;
+  width: 0.58rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ge-muted) 42%, transparent);
+}
+
+.case-preview-url {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ge-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.case-preview-body {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  min-height: 26rem;
+}
+
+.case-preview-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border-right: 1px solid var(--ge-border);
+  padding: 1rem;
+}
+
+.case-preview-rail div {
+  display: grid;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.7rem;
+  color: var(--ge-soft);
+}
+
+.case-preview-rail .active {
+  background: var(--ge-accent-soft);
+  color: var(--ge-accent);
+}
+
+.case-preview-main {
+  padding: 1.15rem;
+}
+
+.case-preview-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.case-preview-mark {
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 0.85rem;
+}
+
+.case-preview-heading strong,
+.case-preview-heading span {
+  display: block;
+}
+
+.case-preview-heading strong {
+  color: var(--ge-text-strong);
+  font-size: 0.98rem;
+}
+
+.case-preview-heading span {
+  margin-top: 0.1rem;
+  color: var(--ge-soft);
+  font-size: 0.78rem;
+}
+
+.case-preview-chart {
+  display: flex;
+  align-items: end;
+  gap: 0.55rem;
+  height: 8.5rem;
+  margin-top: 1.25rem;
+  border: 1px solid var(--ge-border);
+  border-radius: 1rem;
+  background:
+    linear-gradient(color-mix(in srgb, var(--ge-text) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ge-text) 4%, transparent) 1px, transparent 1px),
+    color-mix(in srgb, var(--ge-bg-soft) 72%, transparent);
+  background-size: 32px 32px;
+  padding: 1rem;
+}
+
+.case-preview-chart i {
+  display: block;
+  flex: 1;
+  min-width: 0.9rem;
+  border-radius: 999px 999px 0.35rem 0.35rem;
+  background: linear-gradient(180deg, var(--ge-accent), var(--ge-cyan));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--ge-accent) 20%, transparent);
+}
+
+.case-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.85rem;
+}
+
+.case-preview-grid div,
+.case-preview-flow div {
+  border: 1px solid var(--ge-border);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--ge-surface-2) 74%, transparent);
+}
+
+.case-preview-grid div {
+  padding: 0.78rem;
+}
+
+.case-preview-grid strong {
+  display: block;
+  color: var(--ge-text-strong);
+  font-size: 1.18rem;
+}
+
+.case-preview-grid span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--ge-soft);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.case-preview-flow {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.case-preview-flow div {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  color: var(--ge-muted);
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.case-preview-flow svg {
+  color: var(--ge-accent);
+}
+
+.case-preview-cyan .case-preview-chart i {
+  background: linear-gradient(180deg, var(--ge-cyan), #60a5fa);
+}
+
+.case-preview-violet .case-preview-chart i {
+  background: linear-gradient(180deg, var(--ge-violet), #60a5fa);
+}
+
+@media (max-width: 640px) {
+  .case-preview-body {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .case-preview-rail {
+    display: none;
+  }
+
+  .case-preview-grid {
+    grid-template-columns: 1fr;
+  }
+}

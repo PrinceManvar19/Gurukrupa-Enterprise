@@ -10,6 +10,7 @@ import { TechStackSection } from '@/components/sections/tech-stack-section'
 import { WhyChooseUsSection } from '@/components/sections/why-choose-us-section'
 import { LeadInquiryForm } from '@/components/sections/lead-inquiry-form'
 import { AchievementsSection } from '@/components/sections/achievements-section'
+import { CaseStudiesSection } from '@/components/sections/case-studies-section'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <ServicesSection mode="teaser" />
         <TechStackSection />
         <WhyChooseUsSection />
+        <CaseStudiesSection compact />
         <AchievementsSection mode="teaser" />
         <CTASection />
         <LeadInquiryForm />
