@@ -2,135 +2,96 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Shield, Zap, Cloud, Users } from 'lucide-react'
+import { Bot, Code2, Headphones, Layers3, Rocket, ShieldCheck } from 'lucide-react'
 
-const bullets = [
+const ease = [0.22, 1, 0.36, 1] as const
+
+const reasons = [
   {
-    icon: Shield,
-    title: 'End-to-End Software Development',
-    description: 'From discovery to delivery and optimization—engineering, integration, and launch support.',
-    gradient: 'from-primary to-accent',
+    icon: Rocket,
+    title: 'End-to-End Development',
+    description: 'From discovery to delivery and optimization — engineering, integration, and launch support.',
   },
   {
-    icon: Zap,
+    icon: Bot,
     title: 'AI & Automation Expertise',
     description: 'Intelligent automation and AI-enabled workflows that reduce effort and accelerate outcomes.',
-    gradient: 'from-accent to-primary',
   },
   {
-    icon: Cloud,
+    icon: ShieldCheck,
     title: 'Scalable Enterprise Solutions',
     description: 'Architectures designed for growth, security, reliability, and long-term maintainability.',
-    gradient: 'from-primary to-accent',
   },
   {
-    icon: Users,
+    icon: Layers3,
     title: 'Cross-Platform Development',
-    description: 'Native-grade experiences across mobile and web—without compromising performance.',
-    gradient: 'from-accent to-primary',
+    description: 'Native-grade experiences across mobile and web — without compromising performance.',
   },
   {
-    icon: Shield,
+    icon: Headphones,
     title: 'Dedicated Support & Optimization',
     description: 'Continuous improvements after go-live to keep systems fast, secure, and evolving.',
-    gradient: 'from-primary to-accent',
   },
   {
-    icon: Zap,
+    icon: Code2,
     title: 'Modern Technology Stack',
-    description: 'React, Flutter, Node.js, Python, AI, and IoT—delivered with enterprise best practices.',
-    gradient: 'from-accent to-primary',
+    description: 'React, Flutter, Node.js, Python, AI, and IoT — delivered with enterprise best practices.',
   },
 ]
 
 export function WhyChooseUsSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   return (
-    <section id="why-choose-us" ref={sectionRef} className="relative py-28 overflow-hidden">
+    <section id="why-choose-us" ref={sectionRef} className="relative overflow-hidden py-24">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/40 to-background" />
-
-      <div className="absolute -top-24 -left-24 w-[420px] h-[420px] bg-primary/10 rounded-full blur-[140px]" />
-      <div className="absolute -bottom-24 -right-24 w-[520px] h-[520px] bg-accent/10 rounded-full blur-[180px]" />
-
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10 mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease }}
+          className="mx-auto mb-14 max-w-3xl text-center"
         >
-          <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">Why Gurukrupa</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Built for <span className="gradient-text">enterprise</span> outcomes
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            A premium delivery model that combines engineering excellence with ongoing support—so your systems keep improving after go-live.
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Why Gurukrupa</span>
+          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Built for enterprise outcomes</h2>
+          <p className="mt-5 text-lg leading-8 text-muted-foreground">
+            A premium delivery model that combines engineering excellence with ongoing support so your systems keep improving after go-live.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {bullets.map((b, idx) => (
-            <motion.div
-              key={b.title}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: idx * 0.08, duration: 0.65 }}
-              className="group"
-            >
-              <div className="glass-card rounded-xl p-7 h-full card-hover relative overflow-hidden">
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r ${b.gradient} blur-2xl`} />
-                <div className="relative z-10">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${b.gradient} flex items-center justify-center shadow-[0_0_28px_rgba(14,165,233,0.22)]`}
-                    >
-                      <b.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground">{b.title}</h3>
-                      <p className="text-muted-foreground mt-2 leading-relaxed text-sm md:text-base">{b.description}</p>
-                    </div>
-                  </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((reason, index) => {
+            const Icon = reason.icon
 
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span
-                      className="px-3 py-1 rounded-full text-xs font-medium border border-accent/20 text-foreground"
-                      style={{ background: 'var(--brand-green-soft)' }}
-                    >
-                      Premium delivery
-                    </span>
-                    <span
-                      className="px-3 py-1 rounded-full text-xs font-medium border border-accent/20 text-foreground"
-                      style={{ background: 'var(--brand-red-soft)' }}
-                    >
-                      Continuous improvement
-                    </span>
-                  </div>
+            return (
+              <motion.div
+                key={reason.title}
+                initial={{ opacity: 0, y: 26 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.07, duration: 0.55, ease }}
+                className="group glass-card relative overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40"
+              >
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <Icon className="mb-6 h-8 w-8 text-accent" />
+                <h3 className="text-xl font-semibold text-foreground">{reason.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{reason.description}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {['Premium delivery', 'Continuous improvement'].map((pill) => (
+                    <span key={pill} className="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+                      {pill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.35, duration: 0.7 }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="/contact"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-lg btn-premium text-primary-foreground text-lg font-medium neon-glow"
-          >
-            Talk to our enterprise team
-          </a>
-        </motion.div>
       </div>
     </section>
   )
 }
-

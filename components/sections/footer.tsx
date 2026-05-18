@@ -1,164 +1,134 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { Linkedin, Twitter, Instagram, Github, Mail, MapPin, Phone } from 'lucide-react'
+import Link from 'next/link'
+import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react'
 
 import footerDarkLogo from '@/Logos/Dark logo 1.png'
 import footerLightLogo from '@/Logos/Light logo 1.png'
 
-const socialLinks = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Github, href: '#', label: 'GitHub' },
+const quickLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Products', href: '#products' },
+  { name: 'Services', href: '#services' },
+  { name: 'Solutions', href: '/solutions' },
+  { name: 'Achievements', href: '#achievements' },
+  { name: 'Partners', href: '#partners' },
+  { name: 'Contact', href: '#lead-inquiry' },
 ]
 
-const quickLinks = [
-  { name: 'About', href: '/about' },
-  { name: 'Achievements', href: '/achievements' },
-  { name: 'Partners', href: '/partners' },
-  { name: 'Contact', href: '/contact' },
+const products = ['Go Digital Chat', 'Mod GST', 'Follow-up.io', 'Scratch DIGI', 'Mob Order', 'CriZone']
+
+const socials = [
+  { name: 'LinkedIn', href: '#', icon: Linkedin },
+  { name: 'Twitter', href: '#', icon: Twitter },
+  { name: 'Instagram', href: '#', icon: Instagram },
+  { name: 'GitHub', href: '#', icon: Github },
 ]
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
-
   return (
-    <footer className="relative pt-20 pb-8 overflow-hidden">
-      {/* Top Border */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-      
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary" />
-      
-      {/* Gradient Orbs */}
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[180px]" />
-      
-      {/* Noise Overlay */}
+    <footer className="relative overflow-hidden pt-20 pb-8">
+      <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/70" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.a
-          href="/"
-          aria-label="Gurukrupa Enterprise home"
-          className="footer-brand-logo-shell mx-auto mb-8 inline-flex items-center justify-center"
-          whileHover={{ scale: 1.015, y: -1 }}
-          transition={{ duration: 0.24, ease: 'easeOut' }}
-        >
-          <span className="footer-logo-stack">
-            <Image
-              src={footerLightLogo}
-              alt="Gurukrupa Enterprise"
-              className="footer-brand-logo footer-brand-logo-light h-[68px] w-auto object-contain md:h-[82px]"
-            />
-            <Image
-              src={footerDarkLogo}
-              alt=""
-              aria-hidden
-              className="footer-brand-logo footer-brand-logo-dark h-[68px] w-auto object-contain md:h-[82px]"
-            />
-          </span>
-        </motion.a>
-
-        <p className="mx-auto mb-14 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
-          Building trust through innovation. We deliver cutting-edge solutions
-          that transform businesses and create lasting partnerships.
-        </p>
-
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground/80 mb-4">
-              Gurukrupa Enterprise
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <Link href="/" aria-label="Gurukrupa Enterprise home" className="footer-brand-logo-shell mb-5 inline-flex items-center">
+              <span className="footer-logo-stack">
+                <Image
+                  src={footerLightLogo}
+                  alt="Gurukrupa Enterprise"
+                  className="footer-brand-logo footer-brand-logo-light h-[58px] w-auto object-contain"
+                />
+                <Image
+                  src={footerDarkLogo}
+                  alt=""
+                  aria-hidden
+                  className="footer-brand-logo footer-brand-logo-dark h-[58px] w-auto object-contain"
+                />
+              </span>
+            </Link>
+            <p className="text-sm leading-7 text-muted-foreground">
+              Software WITH a Service for business systems, operational workflows, AI automation, mobile products, and enterprise delivery.
             </p>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Modern software, AI workflows, and scalable digital products for
-              teams that want clean execution and durable systems.
-            </p>
-            
-            {/* Social Links */}
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/50 transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </motion.a>
-              ))}
+            <div className="mt-6 flex gap-3">
+              {socials.map((social) => {
+                const Icon = social.icon
+
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    aria-label={social.name}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:border-accent/40 hover:text-accent"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
+            <h4 className="mb-5 text-lg font-semibold text-foreground">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-accent transition-colors text-sm"
-                  >
+                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-accent">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-foreground">Contact</h4>
+            <h4 className="mb-5 text-lg font-semibold text-foreground">Products</h4>
+            <ul className="space-y-3">
+              {products.map((product) => (
+                <li key={product} className="text-sm text-muted-foreground">
+                  {product}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-5 text-lg font-semibold text-foreground">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-accent mt-0.5" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
-                  <a href="mailto:gurukrupaenterprise247@gmail.com" className="text-sm text-foreground hover:text-accent transition-colors">
-                    gurukrupaenterprise247@gmail.com
-                  </a>
-                </div>
+                <Mail className="mt-0.5 h-5 w-5 text-accent" />
+                <a href="mailto:gurukrupaenterprise247@gmail.com" className="text-sm leading-6 text-muted-foreground transition hover:text-accent">
+                  gurukrupaenterprise247@gmail.com
+                </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-accent mt-0.5" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
-                  <a href="tel:+918141840404" className="text-sm text-foreground hover:text-accent transition-colors">
-                    +91 81418 40404
-                  </a>
-                </div>
+                <Phone className="mt-0.5 h-5 w-5 text-accent" />
+                <a href="tel:+918141840404" className="text-sm text-muted-foreground transition hover:text-accent">
+                  +91 81418 40404
+                </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-accent mt-0.5" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Location</p>
-                  <span className="text-sm text-foreground">Global Presence</span>
-                </div>
+                <MapPin className="mt-0.5 h-5 w-5 text-accent" />
+                <span className="text-sm text-muted-foreground">Global Presence</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-accent/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              {currentYear} Gurukrupa Enterprise. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+        <div className="mt-14 border-t border-accent/10 pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
+            <p>2026 Gurukrupa Enterprise. All rights reserved.</p>
+            <div className="flex gap-5">
+              <Link href="/privacy" className="transition hover:text-accent">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+              </Link>
+              <Link href="/terms" className="transition hover:text-accent">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

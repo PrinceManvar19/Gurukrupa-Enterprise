@@ -1,102 +1,117 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowRight, Building2, Mail, MessageSquareText, Phone, User } from 'lucide-react'
+import { useMemo, useRef, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { ArrowRight, CheckCircle2, Mail, Phone } from 'lucide-react'
+
+const ease = [0.22, 1, 0.36, 1] as const
+
+const interests = {
+  'Product Consultation': ['Go Digital Chat', 'Mod GST', 'Follow-up.io', 'Scratch DIGI', 'Mob Order', 'CriZone', 'Custom Enterprise Products'],
+  'Service Requirement': ['Web Platforms', 'Mobile Products', 'AI & Automation', 'Enterprise Software'],
+  'SWAS Delivery Plan': ['Hands-on Support', 'Workflow Automation', 'Continuous Optimization'],
+  'Custom Enterprise Build': ['Custom Integrations', 'Compliance Systems', 'Operational Dashboards', 'Enterprise Automation'],
+}
+
+type InquiryType = keyof typeof interests
 
 export function LeadInquiryForm({ compact = false }: { compact?: boolean }) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const [inquiryType, setInquiryType] = useState<InquiryType>('Product Consultation')
+  const interestOptions = useMemo(() => interests[inquiryType], [inquiryType])
+
   return (
-    <section id="lead-inquiry" className={`relative overflow-hidden ${compact ? 'py-16' : 'py-24'}`}>
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/60 to-background" />
-      <div className="absolute left-1/4 top-1/4 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[150px]" />
-      <div className="absolute bottom-0 right-1/4 h-[360px] w-[360px] rounded-full bg-accent/10 blur-[140px]" />
+    <section id="lead-inquiry" ref={sectionRef} className={`relative overflow-hidden py-24 ${compact ? 'py-16' : ''}`}>
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/40 to-background" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="mb-4 block text-sm font-medium uppercase tracking-wider text-accent">
-              Lead Inquiry
-            </span>
-            <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-              Tell us what you want to <span className="gradient-text">build next</span>
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              Share your product, service, or automation requirement. We will review it and respond with the next practical step.
-            </p>
-            <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
-              {['Product consultation', 'Service requirement', 'SWAS delivery plan', 'Custom enterprise build'].map((item) => (
-                <div key={item} className="rounded-lg border border-accent/15 bg-card/70 px-4 py-3">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+      <div className="container relative z-10 mx-auto grid gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.75, ease }}
+          className="lg:sticky lg:top-28"
+        >
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Lead Inquiry</span>
+          <h2 className="text-4xl font-semibold leading-tight text-foreground md:text-5xl">Bring the workflow. We&apos;ll map the system.</h2>
+          <p className="mt-5 text-lg leading-8 text-muted-foreground">
+            Tell us what your team needs to build, automate, improve, or scale. Gurukrupa Enterprise will help shape the next practical step.
+          </p>
 
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ delay: 0.08, duration: 0.7 }}
-            className="glass-card rounded-lg p-6 md:p-8"
-          >
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="relative">
-                <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent" />
-                <input className="w-full rounded-lg border border-border bg-background px-11 py-3.5 text-foreground outline-none transition focus:border-accent" placeholder="Name" />
-              </label>
-              <label className="relative">
-                <Building2 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent" />
-                <input className="w-full rounded-lg border border-border bg-background px-11 py-3.5 text-foreground outline-none transition focus:border-accent" placeholder="Company" />
-              </label>
-              <label className="relative">
-                <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent" />
-                <input type="email" className="w-full rounded-lg border border-border bg-background px-11 py-3.5 text-foreground outline-none transition focus:border-accent" placeholder="Email" />
-              </label>
-              <label className="relative">
-                <Phone className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent" />
-                <input className="w-full rounded-lg border border-border bg-background px-11 py-3.5 text-foreground outline-none transition focus:border-accent" placeholder="Phone" />
-              </label>
-            </div>
+          <div className="mt-8 space-y-4">
+            <a href="mailto:gurukrupaenterprise247@gmail.com" className="flex items-center gap-3 text-sm font-medium text-foreground transition hover:text-accent">
+              <Mail className="h-5 w-5 text-accent" />
+              gurukrupaenterprise247@gmail.com
+            </a>
+            <a href="tel:+918141840404" className="flex items-center gap-3 text-sm font-medium text-foreground transition hover:text-accent">
+              <Phone className="h-5 w-5 text-accent" />
+              +91 81418 40404
+            </a>
+          </div>
 
-            <select className="mt-4 w-full rounded-lg border border-border bg-background px-4 py-3.5 text-foreground outline-none transition focus:border-accent" defaultValue="">
-              <option value="" disabled>
-                Select inquiry type
-              </option>
-              <optgroup label="Products">
-                <option>Go Digital Chat</option>
-                <option>Mod GST</option>
-                <option>Follow-up.io</option>
-                <option>Scratch DIGI</option>
-                <option>Mob Order</option>
-                <option>CriZone</option>
-              </optgroup>
-              <optgroup label="Services">
-                <option>React.js Development</option>
-                <option>React Native Development</option>
-                <option>Node.js Development</option>
-                <option>AI Agent Development</option>
-                <option>Mobile App Development</option>
-                <option>Web App Development</option>
-                <option>IoT / Automation</option>
-              </optgroup>
-            </select>
+          <div className="mt-8 space-y-3">
+            {['Plan a product consultation', 'Define a SWAS delivery plan', 'Build custom enterprise software'].map((reason) => (
+              <div key={reason} className="flex items-center gap-3 text-sm text-muted-foreground">
+                <CheckCircle2 className="h-5 w-5 text-accent" />
+                {reason}
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
-            <label className="relative mt-4 block">
-              <MessageSquareText className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-accent" />
-              <textarea className="min-h-36 w-full rounded-lg border border-border bg-background px-11 py-3.5 text-foreground outline-none transition focus:border-accent" placeholder="Tell us about your requirement" />
+        <motion.form
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.08, duration: 0.75, ease }}
+          className="glass-card rounded-2xl p-6 md:p-8"
+        >
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-foreground">Name</span>
+              <input className="premium-input w-full" type="text" placeholder="Your name" />
             </label>
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-foreground">Email</span>
+              <input className="premium-input w-full" type="email" placeholder="you@company.com" />
+            </label>
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-foreground">Phone</span>
+              <input className="premium-input w-full" type="tel" placeholder="+91 00000 00000" />
+            </label>
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-foreground">Inquiry Type</span>
+              <select
+                className="premium-select w-full"
+                value={inquiryType}
+                onChange={(event) => setInquiryType(event.target.value as InquiryType)}
+              >
+                {Object.keys(interests).map((type) => (
+                  <option key={type}>{type}</option>
+                ))}
+              </select>
+            </label>
+          </div>
 
-            <button type="submit" className="mt-5 inline-flex w-full items-center justify-center rounded-lg btn-premium px-8 py-4 text-base font-semibold text-primary-foreground">
-              Submit Inquiry
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-          </motion.form>
-        </div>
+          <label className="mt-5 block space-y-2">
+            <span className="text-sm font-medium text-foreground">Product/Service Interest</span>
+            <select className="premium-select w-full">
+              {interestOptions.map((interest) => (
+                <option key={interest}>{interest}</option>
+              ))}
+            </select>
+          </label>
+
+          <label className="mt-5 block space-y-2">
+            <span className="text-sm font-medium text-foreground">Message</span>
+            <textarea className="premium-input w-full" rows={4} placeholder="Describe your project, product, workflow, or support need" />
+          </label>
+
+          <button type="submit" className="btn-premium mt-6 inline-flex w-full items-center justify-center rounded-lg px-8 py-4 text-base font-semibold text-primary-foreground">
+            Send Inquiry
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </button>
+        </motion.form>
       </div>
     </section>
   )

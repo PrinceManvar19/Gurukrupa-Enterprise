@@ -1,44 +1,32 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useInView } from 'framer-motion'
+import { Quote } from 'lucide-react'
+
+const ease = [0.22, 1, 0.36, 1] as const
 
 const testimonials = [
   {
     name: 'Sarah Mitchell',
     role: 'CEO, TechForward Inc.',
-    content:
+    quote:
       'Gurukrupa Enterprise transformed our entire digital infrastructure. Their innovative approach and dedication to excellence exceeded all our expectations. Truly a game-changer for our business.',
-    rating: 5,
+    initials: 'SM',
   },
   {
-    name: 'David Chen',
-    role: 'CTO, Innovation Labs',
-    content:
-      "Working with Gurukrupa has been an exceptional experience. Their team's technical expertise and commitment to delivering quality solutions is unmatched in the industry.",
-    rating: 5,
+    name: 'Rajesh Kumar',
+    role: 'CTO, DataBridge Solutions',
+    quote:
+      "Their SWAS model changed how we think about software delivery. We've had a dedicated team supporting us since day one.",
+    initials: 'RK',
   },
   {
-    name: 'Emily Rodriguez',
-    role: 'Director, Global Solutions',
-    content:
-      'The level of professionalism and innovation they bring to every project is remarkable. Gurukrupa Enterprise is not just a vendor; they are a true strategic partner.',
-    rating: 5,
-  },
-  {
-    name: 'Michael Foster',
-    role: 'VP Engineering, CloudScale',
-    content:
-      "Their AI-driven solutions have revolutionized our operations. The ROI we've seen since partnering with Gurukrupa has been phenomenal. Highly recommended!",
-    rating: 5,
-  },
-  {
-    name: 'Amanda Lewis',
-    role: 'Founder, NextGen Startups',
-    content:
-      'From concept to deployment, Gurukrupa delivered beyond what we imagined possible. Their attention to detail and creative solutions set them apart from the competition.',
-    rating: 5,
+    name: 'Priya Sharma',
+    role: 'Founder, RetailTech India',
+    quote:
+      'Gurukrupa built our mobile app and stayed involved post-launch. The continuous support and iterations made all the difference.',
+    initials: 'PS',
   },
 ]
 
@@ -46,183 +34,84 @@ type TestimonialsMode = 'featured' | 'full'
 
 export function TestimonialsSection({ mode = 'full' }: { mode?: TestimonialsMode }) {
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-
-  const isFeatured = mode === 'featured'
-  const featuredTestimonial = testimonials[0]
+  const visibleTestimonials = mode === 'featured' ? testimonials.slice(0, 1) : testimonials
+  const testimonial = visibleTestimonials[currentIndex % visibleTestimonials.length]
 
   useEffect(() => {
-    if (isFeatured) return
-    if (!isAutoPlaying) return
+    if (mode === 'featured') return
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    const interval = window.setInterval(() => {
+      setCurrentIndex((index) => (index + 1) % testimonials.length)
     }, 5000)
 
-    return () => clearInterval(interval)
-  }, [isAutoPlaying, isFeatured])
-
-  const goToPrevious = () => {
-    setIsAutoPlaying(false)
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
-  const goToNext = () => {
-    setIsAutoPlaying(false)
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+    return () => window.clearInterval(interval)
+  }, [mode])
 
   return (
-    <section id="testimonials" ref={sectionRef} className="relative py-32 overflow-hidden">
-      {/* Premium Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary to-background" />
-
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[200px]" />
-      <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px]" />
-
-      {/* Noise Overlay */}
+    <section id="testimonials" ref={sectionRef} className="relative overflow-hidden py-24">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/40 to-background" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+      <div className="container relative z-10 mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.8, ease }}
+          className="mx-auto mb-14 max-w-3xl text-center"
         >
-          <span className="text-sm text-accent font-medium tracking-wider uppercase mb-4 block">
-            Testimonials
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            What Our <span className="gradient-text">Clients Say</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            Hear from the industry leaders and innovators who have partnered with us to achieve extraordinary results.
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-accent">Testimonials</span>
+          <h2 className="text-4xl font-semibold text-foreground md:text-5xl">What Our Clients Say</h2>
+          <p className="mt-5 text-lg leading-8 text-muted-foreground">
+            Real feedback from leaders who partnered with Gurukrupa Enterprise for software, support, and continuous product improvement.
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {isFeatured ? (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5 }}
-                className="glass-card rounded-lg p-8 md:p-12 relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
-
-                <div className="absolute top-8 right-8 md:top-12 md:right-12">
-                  <Quote className="w-12 h-12 text-accent/20" />
+        <div className="mx-auto max-w-4xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.45, ease }}
+              className="glass-card relative overflow-hidden rounded-2xl p-8 md:p-10"
+            >
+              <Quote className="absolute left-8 top-8 h-16 w-16 text-accent/20" />
+              <blockquote className="relative z-10 pt-16 text-xl font-medium leading-9 text-foreground md:text-2xl md:leading-10">
+                &quot;{testimonial.quote}&quot;
+              </blockquote>
+              <div className="my-8 h-px bg-border" />
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-lg font-semibold text-white">
+                  {testimonial.initials}
                 </div>
-
-                <div className="flex gap-1 mb-6">
-                  {Array.from({ length: featuredTestimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                  ))}
+                <div>
+                  <div className="font-semibold text-foreground">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
                 </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-                <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-8 text-foreground">
-                  "{featuredTestimonial.content}"
-                </blockquote>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-white">
-                    {featuredTestimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-lg text-foreground">{featuredTestimonial.name}</div>
-                    <div className="text-muted-foreground">{featuredTestimonial.role}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              <>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="glass-card rounded-lg p-8 md:p-12 relative overflow-hidden"
-                  >
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
-
-                    <div className="absolute top-8 right-8 md:top-12 md:right-12">
-                      <Quote className="w-12 h-12 text-accent/20" />
-                    </div>
-
-                    <div className="flex gap-1 mb-6">
-                      {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                      ))}
-                    </div>
-
-                    <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-8 text-foreground">
-                      "{testimonials[currentIndex].content}"
-                    </blockquote>
-
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-white">
-                        {testimonials[currentIndex].name.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="font-semibold text-lg text-foreground">{testimonials[currentIndex].name}</div>
-                        <div className="text-muted-foreground">{testimonials[currentIndex].role}</div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                <div className="flex justify-center gap-4 mt-8">
-                  <button
-                    onClick={goToPrevious}
-                    className="p-3 rounded-full glass-card hover:border-accent/50 transition-all duration-300 group"
-                    aria-label="Previous testimonial"
-                  >
-                    <ChevronLeft className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  </button>
-
-                  <div className="flex items-center gap-2">
-                    {testimonials.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          setIsAutoPlaying(false)
-                          setCurrentIndex(index)
-                        }}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          index === currentIndex
-                            ? 'w-8 bg-gradient-to-r from-primary to-accent'
-                            : 'w-2 bg-border hover:bg-accent/30'
-                        }`}
-                        aria-label={`Go to testimonial ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={goToNext}
-                    className="p-3 rounded-full glass-card hover:border-accent/50 transition-all duration-300 group"
-                    aria-label="Next testimonial"
-                  >
-                    <ChevronRight className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
+          {mode !== 'featured' ? (
+            <div className="mt-8 flex justify-center gap-2">
+              {testimonials.map((item, index) => (
+                <button
+                  key={item.name}
+                  type="button"
+                  aria-label={`Show testimonial from ${item.name}`}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'w-8 bg-accent' : 'w-2 bg-border hover:bg-accent/40'
+                  }`}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
   )
 }
-

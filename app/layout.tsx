@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
-import { Inter } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/layout/Header'
@@ -8,17 +8,17 @@ import { Footer } from '@/components/sections/footer'
 
 import './globals.css'
 
-const inter = Inter({
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-geist',
 })
 
 export const metadata: Metadata = {
-  title: 'Gurukrupa Enterprise | Digital Products & Scalable Tech Solutions',
+  title: 'Gurukrupa Enterprise | Software WITH a Service',
   description:
-    'Gurukrupa Enterprise builds digital products and scalable technology solutions with hands-on service and long-term partnership.',
+    'Gurukrupa Enterprise builds business software, operational workflows, AI automation, and enterprise systems with hands-on service.',
   generator: 'v0.app',
-  keywords: ['innovation', 'technology', 'enterprise', 'solutions', 'partnerships'],
+  keywords: ['software with a service', 'enterprise software', 'AI automation', 'business workflows', 'Gurukrupa Enterprise'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
   manifest: '/site.webmanifest',
   icons: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#1E3A8A',
+  themeColor: '#05070d',
   width: 'device-width',
   initialScale: 1,
 }
@@ -67,7 +67,7 @@ export default function RootLayout({
       className="bg-background font-sans antialiased overflow-x-hidden"
       suppressHydrationWarning
     >
-      <body className={`${inter.variable}`}>
+      <body className={`${geist.variable}`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {`
             (function() {
