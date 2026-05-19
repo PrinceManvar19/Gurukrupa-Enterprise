@@ -25,6 +25,7 @@ export function FeaturedProductCard({ product, index, className = '' }: { produc
   const requestDemoHref = `/products?interest=${encodeURIComponent(product.name)}#lead-inquiry`
   const isGoDigitalChat = product.id === 'go-digital-chat'
   const isModGst = product.id === 'mod-gst'
+  const isFollowUpIo = product.id === 'followupio'
 
   const handleDemoClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!requestProductDemo(product.name)) return
@@ -36,44 +37,53 @@ export function FeaturedProductCard({ product, index, className = '' }: { produc
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -6, scale: 1.03 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ delay: index * 0.06, duration: 0.55, ease }}
       style={
         {
           '--product-accent': product.accentColor,
+          '--product-card-bg': product.cardBg,
+          '--product-body-bg': product.bodyBg,
+          '--product-button-bg': product.buttonBg,
+          '--product-button-hover-bg': product.buttonHoverBg,
+          '--product-tag-bg': product.tagBg,
+          '--product-border': product.borderColor,
+          '--product-text': product.textColor,
+          '--product-muted': product.mutedTextColor,
           '--product-header': product.headerBg,
           '--product-header-primary': product.headerTextPrimary,
           '--product-header-secondary': product.headerTextSecondary,
         } as CSSProperties
       }
-      className={`featured-product-card group overflow-hidden rounded-2xl bg-card/60 transition-all duration-[250ms] ease-in-out ${className}`}
+      className={`featured-product-card group overflow-hidden rounded-2xl transition-shadow duration-[250ms] ease-in-out ${className}`}
     >
-      <div className="relative h-20 overflow-hidden md:h-[110px]" style={{ background: product.headerBg }}>
+      <div className="relative h-20 overflow-hidden md:h-27.5" style={{ background: product.headerBg }}>
         <div className="absolute inset-x-0 top-0 h-1 bg-[var(--product-accent)]" />
         {isGoDigitalChat ? <div className="featured-product-glow absolute left-4 top-3 h-20 w-20 rounded-full md:left-6 md:top-5" /> : null}
         {isModGst ? <div className="featured-product-grid absolute inset-0" /> : null}
         {product.decorative === 'pipeline' ? <div className="featured-product-dots absolute inset-0" /> : null}
 
-        <div className="relative z-10 flex h-full items-center justify-between gap-4 px-5 md:px-6">
+        <div className="relative z-10 flex h-full items-center justify-between gap-3 px-3 md:px-4">
           <div className="flex min-w-0 items-center gap-3 md:gap-4">
             {product.logo ? (
               <div
-                className={`flex h-9 w-9 shrink-0 items-center justify-center bg-white md:h-12 md:w-12 ${
-                  isModGst
-                    ? 'rounded-lg p-2 shadow-[0_12px_28px_rgba(27,122,138,0.2)] md:h-[52px] md:w-[52px]'
-                    : 'rounded-full shadow-[0_12px_26px_rgba(37,211,102,0.28)]'
+                className={`flex h-11 w-11 shrink-0 items-center justify-center bg-white md:h-14 md:w-14 ${
+                  isModGst || isFollowUpIo
+                    ? 'featured-product-logo-shell rounded-lg p-1 md:h-15 md:w-15'
+                    : 'featured-product-logo-shell rounded-full'
                 }`}
               >
                 <Image
                   src={product.logo}
                   alt={`${product.name} logo`}
-                  width={isModGst ? 52 : 48}
-                  height={isModGst ? 52 : 48}
-                  className={`${isModGst ? 'h-full w-full object-contain' : 'h-8 w-8 rounded-full object-cover md:h-11 md:w-11'}`}
+                  width={isModGst || isFollowUpIo ? 60 : 56}
+                  height={isModGst || isFollowUpIo ? 60 : 56}
+                  className={`${isModGst || isFollowUpIo ? 'h-full w-full object-contain' : 'h-9 w-9 rounded-full object-cover md:h-[56px] md:w-[56px]'}`}
                 />
               </div>
             ) : (
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--product-accent)] text-sm font-bold text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] md:h-12 md:w-12 md:text-base">
+              <div className="featured-product-logo-shell flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--product-accent)] text-sm font-bold text-white md:h-14 md:w-14 md:text-base">
                 {product.initials}
               </div>
             )}
@@ -85,13 +95,13 @@ export function FeaturedProductCard({ product, index, className = '' }: { produc
 
           {product.decorative === 'chat-dots' ? (
             <div aria-hidden className="flex gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--product-accent)]" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--product-accent)]" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--product-accent)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--product-header-secondary)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--product-header-secondary)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--product-header-secondary)]" />
             </div>
           ) : null}
           {product.decorative === 'gst-badge' ? (
-            <div aria-hidden className="rounded-full border border-[var(--product-accent)] bg-white px-2.5 py-1 text-[11px] font-bold text-[var(--product-accent)]">
+            <div aria-hidden className="rounded-full border border-[var(--product-border)] bg-[var(--product-tag-bg)] px-2.5 py-1 text-[11px] font-bold text-[var(--product-header-primary)]">
               &#8377; GST
             </div>
           ) : null}
@@ -107,14 +117,14 @@ export function FeaturedProductCard({ product, index, className = '' }: { produc
         </div>
       </div>
 
-      <div className="p-6 md:p-8">
+      <div className="bg-[var(--product-body-bg)] p-6 md:p-8">
         <div className="mb-5 flex justify-end">
-          <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">Featured</span>
+          <span className="rounded-full border border-[var(--product-border)] bg-[var(--product-button-bg)] px-3 py-1 text-xs font-semibold text-[var(--product-text)]">Featured</span>
         </div>
-        <p className="text-sm leading-7 text-muted-foreground">{product.description}</p>
+        <p className="text-sm leading-7 text-[var(--product-muted)]">{product.description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {product.tags.map((tag) => (
-            <span key={tag} className="rounded-full border border-[var(--product-accent)]/45 bg-transparent px-3 py-1 text-xs font-medium text-[var(--product-accent)]">
+            <span key={tag} className="rounded-full border border-[var(--product-border)] bg-[var(--product-tag-bg)] px-3 py-1 text-xs font-medium text-[var(--product-text)]">
               {tag}
             </span>
           ))}
@@ -124,9 +134,7 @@ export function FeaturedProductCard({ product, index, className = '' }: { produc
             href={product.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center rounded-full bg-[var(--product-accent)] px-4 py-2 text-sm font-semibold transition duration-[250ms] ease-in-out hover:brightness-110 ${
-              isGoDigitalChat ? 'text-[#07130c]' : 'text-white'
-            }`}
+            className="inline-flex items-center rounded-full bg-[var(--product-button-bg)] px-4 py-2 text-sm font-semibold text-[var(--product-text)] transition duration-[250ms] ease-in-out hover:bg-[var(--product-button-hover-bg)]"
           >
             Visit Product
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -134,7 +142,7 @@ export function FeaturedProductCard({ product, index, className = '' }: { produc
           <a
             href={requestDemoHref}
             onClick={handleDemoClick}
-            className="inline-flex items-center rounded-full border border-[var(--product-accent)]/60 bg-transparent px-4 py-2 text-sm font-semibold text-[var(--product-accent)] transition duration-[250ms] ease-in-out hover:bg-[var(--product-accent)]/10"
+            className="inline-flex items-center rounded-full border border-[var(--product-border)] bg-[var(--product-tag-bg)] px-4 py-2 text-sm font-semibold text-[var(--product-text)] transition duration-[250ms] ease-in-out hover:bg-[var(--product-button-bg)] hover:text-white"
           >
             Request a Demo
           </a>

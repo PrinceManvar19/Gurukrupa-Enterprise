@@ -17,7 +17,7 @@ const quickLinks = [
   { name: 'Contact', href: '/contact' },
 ]
 
-const products = ['Go Digital Chat', 'Mod GST', 'Follow-up.io', 'Scratch DIGI', 'Mob Order', 'CriZone']
+const products = ['Cement & Core Materials', 'Tiles & Flooring', 'Steel & Hardware', 'Paints & Finishes', 'Bulk Procurement', 'Site Supply Support']
 
 export function Footer() {
   return (
@@ -45,7 +45,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-7 text-muted-foreground">
-              Software WITH a Service for business systems, operational workflows, AI automation, mobile products, and enterprise delivery.
+              Premium building materials, enterprise procurement support, and reliable supply coordination for contractors, builders, and growing businesses.
             </p>
           </div>
 

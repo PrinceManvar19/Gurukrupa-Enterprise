@@ -45,20 +45,19 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function StatsBar() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-
   return (
-    <section ref={sectionRef} className="relative py-14 bg-secondary/40 overflow-hidden">
+    <section className="relative py-14 bg-secondary/40 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6, scale: 1.03 }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="glass-card rounded-lg p-6 text-center card-hover"
+              className="glass-card rounded-lg p-6 text-center"
             >
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />

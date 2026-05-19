@@ -8,6 +8,14 @@ export type FeaturedProduct = {
   tags: string[]
   url: string
   accentColor: string
+  cardBg: string
+  bodyBg: string
+  buttonBg: string
+  buttonHoverBg: string
+  tagBg: string
+  borderColor: string
+  textColor: string
+  mutedTextColor: string
   headerBg: string
   headerTextPrimary: string
   headerTextSecondary: string
@@ -24,9 +32,17 @@ export const featuredProducts: FeaturedProduct[] = [
     tags: ['AI Chat', 'Automation', 'Support'],
     url: 'https://godigitalchat.com/',
     accentColor: '#25D366',
-    headerBg: 'linear-gradient(135deg, #e8fdf0 0%, #c8f5d8 100%)',
-    headerTextPrimary: '#0a2e1a',
-    headerTextSecondary: '#1a7a40',
+    cardBg: '#D3F8E0',
+    bodyBg: '#e8fdf0',
+    buttonBg: '#25a244',
+    buttonHoverBg: '#1f8a3a',
+    tagBg: '#b8f0cc',
+    borderColor: '#25a244',
+    textColor: '#1a4a2e',
+    mutedTextColor: '#1a4a2e',
+    headerBg: '#D3F8E0',
+    headerTextPrimary: '#1a4a2e',
+    headerTextSecondary: '#1a4a2e',
     decorative: 'chat-dots',
   },
   {
@@ -38,9 +54,17 @@ export const featuredProducts: FeaturedProduct[] = [
     tags: ['GST', 'Billing', 'Reports'],
     url: 'https://modgst.gurukrupaenterprise.com/',
     accentColor: '#1b7a8a',
-    headerBg: 'linear-gradient(135deg, #e0f5f8 0%, #b8ecf3 100%)',
-    headerTextPrimary: '#0a2830',
-    headerTextSecondary: '#1b7a8a',
+    cardBg: '#C8F0F5',
+    bodyBg: '#ddf6f9',
+    buttonBg: '#1b7a8a',
+    buttonHoverBg: '#146675',
+    tagBg: '#aae8f0',
+    borderColor: '#1b7a8a',
+    textColor: '#0d3b45',
+    mutedTextColor: '#0d3b45',
+    headerBg: '#C8F0F5',
+    headerTextPrimary: '#0d3b45',
+    headerTextSecondary: '#0d3b45',
     decorative: 'gst-badge',
   },
   {
@@ -48,13 +72,21 @@ export const featuredProducts: FeaturedProduct[] = [
     name: 'Follow-up.io',
     subtitle: 'CRM & Lead Management',
     description: 'Automated lead tracking, follow-up flows, and CRM for sales and field teams.',
-    logo: '/logos/Follow-up.io_logo.png',
+    logo: '/logos/followupio.png',
     tags: ['Leads', 'CRM', 'Reminders'],
     url: 'https://www.followupio.com/',
     accentColor: '#6366f1',
-    headerBg: 'linear-gradient(135deg, #ede9fe 0%, #c7d2fe 100%)',
+    cardBg: '#D6DBFE',
+    bodyBg: '#e8ebff',
+    buttonBg: '#6366f1',
+    buttonHoverBg: '#4f46e5',
+    tagBg: '#c2c8fd',
+    borderColor: '#6366f1',
+    textColor: '#1e1b4b',
+    mutedTextColor: '#1e1b4b',
+    headerBg: '#D6DBFE',
     headerTextPrimary: '#1e1b4b',
-    headerTextSecondary: '#4338ca',
+    headerTextSecondary: '#1e1b4b',
     decorative: 'pipeline',
   },
 ]

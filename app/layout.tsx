@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/layout/Header'
 import { Footer } from '@/components/sections/footer'
 import { FloatingContact } from '@/components/floating-contact'
+import { PageTransitionProvider } from '@/components/page-transition-provider'
 
 import './globals.css'
 
@@ -15,10 +16,10 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: 'Gurukrupa Enterprise | Software WITH a Service',
+  title: 'Gurukrupa Enterprise | Building Materials & Enterprise Supply',
   description:
-    'Gurukrupa Enterprise delivers custom software, mobile apps, and AI automation through SWAS — Software WITH a Service. Based in India, serving businesses globally.',
-  keywords: ['software with a service', 'enterprise software', 'AI automation', 'business workflows', 'Gurukrupa Enterprise'],
+    'Gurukrupa Enterprise supplies premium building materials and dependable enterprise procurement support for builders, contractors, and growing businesses.',
+  keywords: ['building materials', 'construction supplies', 'enterprise supply', 'procurement', 'Gurukrupa Enterprise'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
   manifest: '/site.webmanifest',
   icons: {
@@ -85,7 +86,7 @@ export default function RootLayout({
 
         <ThemeProvider>
           <Header />
-          {children}
+          <PageTransitionProvider>{children}</PageTransitionProvider>
           <Footer />
           <FloatingContact />
         </ThemeProvider>

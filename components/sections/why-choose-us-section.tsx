@@ -70,9 +70,11 @@ export function WhyChooseUsSection() {
               <motion.div
                 key={reason.title}
                 initial={{ opacity: 0, y: 26 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: index * 0.07, duration: 0.55, ease }}
-                className="group glass-card relative overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40"
+                className="group glass-card relative overflow-hidden rounded-2xl p-7 transition-shadow duration-300 hover:border-accent/40"
               >
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent" />

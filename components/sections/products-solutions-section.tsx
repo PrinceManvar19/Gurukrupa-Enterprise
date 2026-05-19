@@ -81,9 +81,10 @@ function ProductCard({ product, index, featured }: { product: Product; index: nu
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -6, scale: 1.03 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ delay: index * 0.06, duration: 0.55, ease }}
-      className={`group glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40 hover:shadow-lg ${
+      className={`group glass-card rounded-2xl p-6 transition-shadow duration-300 hover:border-accent/40 hover:shadow-lg ${
         featured ? 'min-h-[360px] md:p-8' : 'min-h-[300px]'
       }`}
     >

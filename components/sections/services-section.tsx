@@ -183,9 +183,11 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 26 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: index * 0.07, duration: 0.55, ease }}
-                className="glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-accent/40 hover:bg-accent/5"
+                className="glass-card rounded-2xl p-6 transition-shadow duration-300 hover:border-accent/40 hover:bg-accent/5"
               >
                 <Icon className="mb-5 h-8 w-8 text-accent" />
                 <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
