@@ -1,8 +1,11 @@
 'use client'
 
-import { MouseEvent, useRef } from 'react'
+import type { ComponentType, MouseEvent } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight, ExternalLink, Gauge, Globe, Layers, Shield, Sparkles, Workflow, Wrench } from 'lucide-react'
+import { FeaturedProductCard } from '@/components/FeaturedProductCard'
+import { featuredProducts } from '@/data/products'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -10,7 +13,7 @@ type Product = {
   name: string
   url?: string
   description: string
-  icon: React.ComponentType<{ className?: string }>
+  icon: ComponentType<{ className?: string }>
   tags: string[]
 }
 
@@ -127,9 +130,7 @@ export function ProductsSolutionsSection({ mode = 'full' }: { mode?: ProductsMod
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
   const isTeaser = mode === 'teaser'
-  const visibleProducts = isTeaser ? products.slice(0, 3) : products
-  const featuredProducts = visibleProducts.slice(0, 3)
-  const standardProducts = visibleProducts.slice(3)
+  const standardProducts = isTeaser ? [] : products.slice(3)
 
   return (
     <section id="products" ref={sectionRef} className="relative overflow-hidden py-24">
@@ -150,9 +151,14 @@ export function ProductsSolutionsSection({ mode = 'full' }: { mode?: ProductsMod
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featuredProducts.map((product, index) => (
-            <ProductCard key={product.name} product={product} index={index} featured />
+            <FeaturedProductCard
+              key={product.id}
+              product={product}
+              index={index}
+              className={isTeaser ? 'md:last:col-span-2 md:last:mx-auto md:last:w-[calc(50%-0.75rem)] lg:last:col-span-1 lg:last:w-auto' : ''}
+            />
           ))}
         </div>
 
@@ -167,7 +173,7 @@ export function ProductsSolutionsSection({ mode = 'full' }: { mode?: ProductsMod
         {isTeaser ? (
           <div className="mt-10 text-center">
             <a href="/products" className="magnetic-button magnetic-button-secondary inline-flex items-center justify-center px-7 py-3 text-sm font-semibold">
-              View all products
+              See all products
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </div>

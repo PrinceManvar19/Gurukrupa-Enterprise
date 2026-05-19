@@ -25,8 +25,7 @@ export function LeadInquiryForm({ compact = false }: { compact?: boolean }) {
   const [quickStatus, setQuickStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const interestOptions = useMemo(() => interests[inquiryType], [inquiryType])
 
-  useEffect(() => {
-    const interest = new URLSearchParams(window.location.search).get('interest')
+  const applyInterest = (interest: string | null) => {
     if (!interest) return
 
     const match = Object.entries(interests).find(([, options]) => options.includes(interest))
@@ -34,6 +33,21 @@ export function LeadInquiryForm({ compact = false }: { compact?: boolean }) {
 
     setInquiryType(match[0] as InquiryType)
     setSelectedInterest(interest)
+  }
+
+  useEffect(() => {
+    applyInterest(new URLSearchParams(window.location.search).get('interest'))
+
+    const handleInterestChange = (event: Event) => {
+      const customEvent = event as CustomEvent<{ interest?: string }>
+      applyInterest(customEvent.detail?.interest ?? null)
+    }
+
+    window.addEventListener('lead-interest-change', handleInterestChange)
+
+    return () => {
+      window.removeEventListener('lead-interest-change', handleInterestChange)
+    }
   }, [])
 
   useEffect(() => {

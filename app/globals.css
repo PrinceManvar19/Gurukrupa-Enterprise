@@ -2956,3 +2956,30 @@ body {
     padding-bottom: 4.75rem;
   }
 }
+
+.featured-product-card {
+  border: 1px solid color-mix(in srgb, var(--product-accent) 15%, transparent);
+}
+
+.featured-product-card:hover {
+  border-color: color-mix(in srgb, var(--product-accent) 60%, transparent);
+  box-shadow: 0 20px 46px color-mix(in srgb, var(--product-accent) 18%, transparent);
+  transform: translateY(-0.5rem);
+}
+
+.featured-product-glow {
+  background: radial-gradient(circle, color-mix(in srgb, var(--product-accent) 34%, transparent) 0%, transparent 68%);
+  filter: blur(8px);
+}
+
+.featured-product-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, #2aa8bc 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, #2aa8bc 5%, transparent) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.featured-product-dots {
+  background-image: radial-gradient(circle, color-mix(in srgb, #818cf8 18%, transparent) 1px, transparent 1.5px);
+  background-size: 14px 14px;
+}
