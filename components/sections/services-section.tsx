@@ -136,7 +136,7 @@ export function ServicesSection({ mode = 'full' }: { mode?: ServicesMode }) {
 
   return (
     <section id="services" ref={sectionRef} className="relative overflow-hidden py-24">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/40 to-background" />
+      <div className="absolute inset-0 bg-linear-to-b from-background via-secondary/40 to-background" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-6">

@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -55,9 +55,12 @@ function isActivePath(pathname: string, href: string) {
 
 export default function Header() {
   const pathname = usePathname()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => setMounted(true), [])
+
+  useEffect(() => {
     if (!isMobileMenuOpen) return
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -76,8 +79,8 @@ export default function Header() {
   return (
     <>
       <motion.header
-        initial={{ y: -16, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+          initial={mounted ? { y: -16, opacity: 0 } : false}
+          animate={mounted ? { y: 0, opacity: 1 } : undefined}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="fixed left-0 right-0 top-0 z-[100] border-b border-white/[0.06] bg-[rgba(5,7,13,0.86)] backdrop-blur-[20px] backdrop-saturate-[180%]"
       >
