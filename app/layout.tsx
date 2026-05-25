@@ -16,10 +16,10 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: 'Gurukrupa Enterprise | Building Materials & Enterprise Supply',
+  title: 'Gurukrupa Enterprise | Software Products & Custom IT Systems',
   description:
-    'Gurukrupa Enterprise supplies premium building materials and dependable enterprise procurement support for builders, contractors, and growing businesses.',
-  keywords: ['building materials', 'construction supplies', 'enterprise supply', 'procurement', 'Gurukrupa Enterprise'],
+    'Gurukrupa Enterprise builds software products and enterprise systems for Indian businesses — WhatsApp automation, GST billing, CRM, and custom solutions.',
+  keywords: ['IT company India', 'software products', 'GST software', 'WhatsApp automation', 'CRM', 'custom enterprise systems', 'Ahmedabad'],
   authors: [{ name: 'Gurukrupa Enterprise' }],
   manifest: '/site.webmanifest',
   icons: {

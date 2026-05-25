@@ -47,8 +47,8 @@ const deliveryHighlights: { title: string; icon: LucideIcon; text: string }[] = 
 export function SolutionsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden pt-28">
-      <section className="relative overflow-hidden bg-[#0a1628] py-24 text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(26,86,219,0.34),transparent_45%),linear-gradient(45deg,transparent,rgba(14,165,233,0.2))]" />
+      <section className="relative overflow-hidden bg-slate-50 dark:bg-[#0a1628] py-24 text-slate-900 dark:text-white">
+        <div className="absolute inset-0 dark:bg-[linear-gradient(135deg,rgba(26,86,219,0.34),transparent_45%),linear-gradient(45deg,transparent,rgba(14,165,233,0.2))]" />
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -56,11 +56,11 @@ export function SolutionsPage() {
             transition={{ duration: 0.7 }}
             className="mx-auto max-w-4xl text-center"
           >
-            <span className="mb-4 inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-sky-100 backdrop-blur">
+            <span className="mb-4 inline-flex rounded-full px-4 py-2 text-sm font-semibold backdrop-blur bg-slate-100 text-slate-700 border border-slate-200 dark:bg-white/10 dark:text-sky-100 dark:border-white/15">
               Digital Transformation Solutions
             </span>
-            <h1 className="text-5xl font-black tracking-tight md:text-7xl">Build the right software, with the right service.</h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+            <h1 className="text-5xl font-black tracking-tight md:text-7xl dark:text-white text-slate-900">Build the right software, with the right service.</h1>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">
               Gurukrupa Enterprise delivers mobile and web solutions through SWAS: Software WITH a Service. We do not just hand over code; we help launch, improve, and support the system.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -75,7 +75,7 @@ export function SolutionsPage() {
         </div>
       </section>
 
-      <section className="relative py-24">
+      <section className="relative py-16">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/70 to-background" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -100,9 +100,9 @@ export function SolutionsPage() {
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {swasPoints.map((point) => (
-                  <div key={point} className="flex gap-3 rounded-lg border border-accent/15 bg-card/70 p-4 text-sm text-muted-foreground">
+                  <div key={point} className="flex gap-3 items-center rounded-lg border border-accent/15 bg-card/70 p-4 text-sm text-muted-foreground">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span>{point}</span>
+                    <span className="font-medium">{point}</span>
                   </div>
                 ))}
               </div>
@@ -141,13 +141,13 @@ export function SolutionsPage() {
         </div>
       </section>
 
-      <section className="relative bg-[#0a1628] py-20 text-white">
+      <section className="relative dark:bg-[#0a1628] bg-slate-50 py-20 text-slate-900 dark:text-white">
         <div className="container mx-auto grid gap-6 px-6 md:grid-cols-3">
           {deliveryHighlights.map(({ title, icon: Icon, text }) => (
-            <div key={title} className="rounded-lg border border-white/10 bg-white/8 p-6">
+            <div key={title} className="rounded-lg p-6 bg-white border border-slate-200 dark:rounded-lg dark:border-white/10 dark:bg-white/8">
               <Icon className="h-7 w-7 text-[#0ea5e9]" />
-              <h3 className="mt-5 text-xl font-bold">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
+              <h3 className="mt-5 text-xl font-bold text-slate-800 dark:text-white">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-300">{text}</p>
             </div>
           ))}
         </div>

@@ -17,7 +17,7 @@ const quickLinks = [
   { name: 'Contact', href: '/contact' },
 ]
 
-const products = ['Cement & Core Materials', 'Tiles & Flooring', 'Steel & Hardware', 'Paints & Finishes', 'Bulk Procurement', 'Site Supply Support']
+const products = ['Go Digital Chat', 'Mod GST', 'Follow-up.io', 'Scratch DIGI', 'Mob Order', 'CriZone']
 
 export function Footer() {
   return (
@@ -45,7 +45,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-7 text-muted-foreground">
-              Premium building materials, enterprise procurement support, and reliable supply coordination for contractors, builders, and growing businesses.
+              Software products and custom enterprise systems built for modern Indian businesses.
             </p>
           </div>
 
@@ -78,8 +78,8 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-5 w-5 text-accent" />
-                <a href="mailto:gurukrupaenterprise247@gmail.com" className="text-sm leading-6 text-muted-foreground transition hover:text-accent">
-                  gurukrupaenterprise247@gmail.com
+                <a href="mailto:hello@gurukrupaenterprise.com" className="text-sm leading-6 text-muted-foreground transition hover:text-accent">
+                  hello@gurukrupaenterprise.com
                 </a>
               </li>
               <li className="flex items-start gap-3">

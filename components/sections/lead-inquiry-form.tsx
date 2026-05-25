@@ -83,6 +83,8 @@ export function LeadInquiryForm({ compact = false }: { compact?: boolean }) {
     }
   }
 
+  const [showFull, setShowFull] = useState(false)
+
   return (
     <section id="lead-inquiry" ref={sectionRef} className={`relative overflow-hidden py-24 ${compact ? 'py-16' : ''}`}>
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/40 to-background" />
@@ -102,9 +104,9 @@ export function LeadInquiryForm({ compact = false }: { compact?: boolean }) {
           </p>
 
           <div className="mt-8 space-y-4">
-            <a href="mailto:gurukrupaenterprise247@gmail.com" className="flex items-center gap-3 text-sm font-medium text-foreground transition hover:text-accent">
+            <a href="mailto:hello@gurukrupaenterprise.com" className="flex items-center gap-3 text-sm font-medium text-foreground transition hover:text-accent">
               <Mail className="h-5 w-5 text-accent" />
-              gurukrupaenterprise247@gmail.com
+              hello@gurukrupaenterprise.com
             </a>
             <a href="tel:+918141840404" className="flex items-center gap-3 text-sm font-medium text-foreground transition hover:text-accent">
               <Phone className="h-5 w-5 text-accent" />
@@ -150,13 +152,18 @@ export function LeadInquiryForm({ compact = false }: { compact?: boolean }) {
             {quickStatus === 'success' ? <span className="text-accent">Thanks. We&apos;ll contact you within 24 hours.</span> : null}
             {quickStatus === 'error' ? <span className="text-destructive">Something went wrong. Please call or WhatsApp us directly.</span> : null}
           </div>
+          <div className="mt-2">
+            <button type="button" onClick={() => setShowFull((v) => !v)} className="text-sm text-slate-400 underline cursor-pointer mt-2">
+              {showFull ? 'Hide full inquiry ↑' : 'Need to share more detail? Fill a full inquiry ↓'}
+            </button>
+          </div>
         </motion.form>
 
         <motion.form
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.08, duration: 0.75, ease }}
-          className="glass-card rounded-2xl p-6 md:p-8 lg:col-start-2"
+          className={`glass-card rounded-2xl p-6 md:p-8 lg:col-start-2 ${showFull ? '' : 'hidden'}`}
         >
           <div className="grid gap-5 md:grid-cols-2">
             <label className="space-y-2">

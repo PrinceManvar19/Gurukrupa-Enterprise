@@ -5,8 +5,8 @@ import { LeadInquiryForm } from '@/components/sections/lead-inquiry-form'
 const contactCards = [
   {
     label: 'Email',
-    value: 'gurukrupaenterprise247@gmail.com',
-    href: 'mailto:gurukrupaenterprise247@gmail.com',
+    value: 'hello@gurukrupaenterprise.com',
+    href: 'mailto:hello@gurukrupaenterprise.com',
     icon: Mail,
   },
   {
@@ -26,8 +26,8 @@ const contactCards = [
 export default function ContactPage() {
   return (
     <main className="relative min-h-screen overflow-hidden pt-28">
-      <section className="relative overflow-hidden bg-[#0a1628] py-24 text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(26,86,219,0.34),transparent_45%),linear-gradient(45deg,transparent,rgba(14,165,233,0.22))]" />
+      <section className="relative overflow-hidden bg-slate-50 dark:bg-[#0a1628] py-24 text-slate-900 dark:text-white">
+        <div className="absolute inset-0 dark:bg-[linear-gradient(135deg,rgba(26,86,219,0.34),transparent_45%),linear-gradient(45deg,transparent,rgba(14,165,233,0.22))]" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
@@ -42,7 +42,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-white/10 bg-white/10 p-6 shadow-2xl shadow-black/25 backdrop-blur">
+            <div className="rounded-lg p-6 bg-white border border-slate-200 shadow-sm">
               <div className="mb-5 flex items-center gap-3">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-[#1a56db] to-[#0ea5e9]">
                   <MessageSquareText className="h-6 w-6 text-white" />
@@ -58,9 +58,9 @@ export default function ContactPage() {
                   ['2', 'We review fit, scope, and urgency'],
                   ['3', 'You receive the next practical step'],
                 ].map(([step, text]) => (
-                  <div key={step} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/8 p-4 text-sm text-slate-200">
-                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-sky-400/15 font-black text-sky-200">{step}</span>
-                    {text}
+                  <div key={step} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-800 dark:bg-white/5 dark:border-white/10 dark:text-white">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-sky-100 font-black text-slate-800 dark:bg-sky-400/15 dark:text-sky-200">{step}</span>
+                    <span className="font-medium text-slate-800 dark:text-white">{text}</span>
                   </div>
                 ))}
               </div>

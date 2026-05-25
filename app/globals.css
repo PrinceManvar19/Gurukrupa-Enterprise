@@ -376,7 +376,9 @@
 /* Premium Glassmorphism */
 .ge-navbar {
   position: relative;
-  background: rgba(255, 255, 255, 0.72);
+  /* Make navbar solid and visible in light mode */
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -416,6 +418,13 @@
   box-shadow:
     0 18px 52px rgba(0, 0, 0, 0.46),
     0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+/* Transparent variant for pages with dark hero (start transparent, solidify on scroll) */
+.transparent-nav {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 [data-theme="dark"] .ge-navbar::before {
